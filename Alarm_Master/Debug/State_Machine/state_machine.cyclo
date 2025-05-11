@@ -1,5 +1,6 @@
 ../State_Machine/state_machine.c:28:6:state_machine_init	1
-../State_Machine/state_machine.c:34:6:state_machine_run	6
-../State_Machine/state_machine.c:64:6:state_machine_armed	12
-../State_Machine/state_machine.c:114:6:state_machine_disarmed	13
-../State_Machine/state_machine.c:173:6:state_machine_countdown	15
+../State_Machine/state_machine.c:34:6:state_machine_run	7
+../State_Machine/state_machine.c:65:6:state_machine_armed	12
+../State_Machine/state_machine.c:115:6:state_machine_disarmed	13
+../State_Machine/state_machine.c:174:6:state_machine_countdown	15
+../State_Machine/state_machine.c:225:6:state_machine_alert	1

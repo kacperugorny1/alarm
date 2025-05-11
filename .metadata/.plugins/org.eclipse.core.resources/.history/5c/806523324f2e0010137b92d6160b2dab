@@ -23,15 +23,15 @@
 #define COUNTDOWN_MS (COUNTDOWN_SECOND) * (1000UL)
 
 typedef enum {
-	ARMED,			//DONE //TODO ALERT RF
-	ARMED_COUNTDOWN, //DONE
-	ALERT_SMS,		//TODO GSM MODULE
+	ARMED,			//DONE
+	ARMED_COUNTDOWN,
+	ALERT_SMS,
 	DISARMED,		//DONE
-	SET_NEW_PIN,	//TODO FLASH + CODE
-	MENAGE_NUMBER,	//TODO FLASH + CODE
-	ADD_NUMBER,		//TODO FLASH + CODE
-	REMOVE_NUMBER,	//TODO FLASH + CODE
-	SET_ALERT_TIME	//TODO FLASH + CODE
+	SET_NEW_PIN,
+	MENAGE_NUMBER,
+	ADD_NUMBER,
+	REMOVE_NUMBER,
+	SET_ALERT_TIME
 } alarm_state;
 extern alarm_state state;
 
@@ -42,6 +42,5 @@ void state_machine_init(uint8_t pin_len, char pin[static pin_len]);
 void state_machine_disarmed(void);
 void state_machine_armed(void);
 void state_machine_countdown(void);
-void state_machine_alert(void);
 
 #endif

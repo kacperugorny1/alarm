@@ -47,7 +47,6 @@ void state_machine_run(char input, bool changed_inp){
 		state_machine_countdown();
 	  break;
 	case ALERT_SMS:
-		state_machine_alert();
 	  break;
 	case MENAGE_NUMBER:
 	  break;
@@ -219,14 +218,4 @@ void state_machine_countdown(void){
 		}
 	}
 
-}
-
-
-void state_machine_alert(void){
-
-	//TODO GSM SEND
-	state = ARMED;
-	memset(str,0,14);
-	len = 0;
-	changed = true;
 }

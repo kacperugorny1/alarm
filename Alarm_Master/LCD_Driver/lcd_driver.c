@@ -66,9 +66,9 @@ void lcd_send_string (char *str)
 
 void lcd_clear(void){
 	  lcd_put_cur(0, 0);
-	  lcd_send_string ("              ");
+	  lcd_send_string ("                ");
 	  lcd_put_cur(1, 0);
-	  lcd_send_string ("              ");
+	  lcd_send_string ("                ");
 }
 
 void lcd_put_cur(int row, int col)

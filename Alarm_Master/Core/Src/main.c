@@ -36,8 +36,6 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define SECOND_PER_SYMBOL 3U
-#define TIME_PER_SYMBOL (SECOND_PER_SYMBOL) * (1000U)
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -66,10 +64,6 @@ static void MX_SPI2_Init(void);
 /* USER CODE BEGIN 0 */
 
 
-char str[14] = "";
-uint8_t len = 0;
-
-uint32_t timestamp = 0;
 alarm_state state = DISARMED;
 
 
@@ -107,11 +101,9 @@ int main(void)
   MX_I2C1_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
-  lcd_init (hi2c1);
-  lcd_put_cur(0, 0);
-  lcd_send_string ("HELLO");
-  lcd_put_cur(1, 0);
-  lcd_send_string("World");
+  lcd_init(hi2c1);
+  state_machine_init(4, "1235");
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -119,38 +111,14 @@ int main(void)
   while (1)
   {
 	  char x = check_keyboard();
-	  if(x) str[len++] = x;
-
-	  switch(state){
-	  case DISARMED:
-		  break;
-	  case ARMED:
-		  break;
-	  case ARMED_COUNTDOWN:
-		  break;
-	  case ALERT_SMS:
-		  break;
-	  case MENAGE_NUMBER:
-		  break;
-	  case REMOVE_NUMBER:
-		  break;
-	  case ADD_NUMBER:
-		  break;
-	  case SET_ALERT_TIME:
-		  break;
-	  case SET_NEW_PIN:
-		  break;
+	  if(x){
+		  if(x < 10) x += '0';
+		  else if(x == 10) x = '*';
+		  else if(x == 11) x = '0';
+		  else if(x == 12) x = '#';
+		  state_machine_run(x, true);
 	  }
-
-
-
-
-
-
-
-
-
-
+	  else state_machine_run(0, false);
 
     /* USER CODE END WHILE */
 

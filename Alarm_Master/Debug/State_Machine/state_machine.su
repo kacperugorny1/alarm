@@ -1,0 +1,3 @@
+../State_Machine/state_machine.c:25:6:state_machine_run	16	static
+../State_Machine/state_machine.c:53:6:state_machine_init	16	static
+../State_Machine/state_machine.c:60:6:state_machine_disarmed	8	static

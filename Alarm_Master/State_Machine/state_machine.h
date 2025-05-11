@@ -4,6 +4,16 @@
  *  Created on: May 11, 2025
  *      Author: axeel
  */
+#ifndef STATE_MACHINE_H_
+#define STATE_MACHINE_H_
+#include <stdbool.h>
+#include <stdint.h>
+#include "stm32f4xx_hal.h"
+#include "lcd_driver.h"
+
+
+#define SECOND_PER_SYMBOL 2U
+#define TIME_PER_SYMBOL (SECOND_PER_SYMBOL) * (1000U)
 
 typedef enum {
 	ARMED,
@@ -17,3 +27,12 @@ typedef enum {
 	SET_ALERT_TIME
 } alarm_state;
 extern alarm_state state;
+
+
+
+void state_machine_run(char input, bool changed_inp);
+void state_machine_init(uint8_t pin_len, char pin[static pin_len]);
+void state_machine_disarmed(void);
+
+
+#endif

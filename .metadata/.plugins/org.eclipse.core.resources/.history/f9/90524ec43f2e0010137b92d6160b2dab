@@ -1,0 +1,12 @@
+/*
+ * state_machine.c
+ *
+ *  Created on: May 11, 2025
+ *      Author: axeel
+ */
+
+#include "state_machine.h"
+
+void StateMachine_Run(alarm_state state, char str[14], uint8_t len, bool changed){
+
+}

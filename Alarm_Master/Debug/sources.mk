@@ -28,4 +28,5 @@ Display \
 Drivers/STM32F4xx_HAL_Driver/Src \
 Keyboard_Driver \
 LCD_Driver \
+State_Machine \
 

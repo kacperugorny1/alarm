@@ -1,0 +1,7 @@
+1 - 2col
+2 - 1row
+3 - 1col
+4 - 4row
+5 - 3col
+6 - 3row
+7 - 2row

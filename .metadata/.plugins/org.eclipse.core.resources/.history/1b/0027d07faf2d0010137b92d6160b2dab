@@ -1,0 +1,73 @@
+/*
+ * Keyboard.c
+ *
+ *  Created on: May 10, 2025
+ *      Author: axeel
+ */
+#include "Keyboard.h"
+#include <stdlib.h>
+#include  <stdbool.h>
+
+uint8_t x[16] = {};
+static uint32_t i = 0;
+static uint32_t lastDebounceTime[12];
+static bool keyState[12] = {};
+
+void set_column(uint8_t col, GPIO_PinState state){
+	switch(col){
+	case 0:
+		HAL_GPIO_WritePin(GPIOA, Keyboard_col1_Pin, state);
+		break;
+	case 1:
+		HAL_GPIO_WritePin(GPIOA, Keyboard_col2_Pin, state);
+		break;
+	case 2:
+		HAL_GPIO_WritePin(GPIOA, Keyboard_col3_Pin, state);
+		break;
+	}
+}
+void handle_key_press(uint8_t col, uint8_t row){
+	keyState[(row) * 3 + col] = 1;
+	x[i++ % 256] = (row) * 3 + col;
+	printf("row: %d col: %d\n", row, col);
+}
+void handle_key_reset(uint8_t col, uint8_t row){
+	keyState[(row) * 3 + col] = 0;
+}
+
+GPIO_PinState read_row(uint8_t row){
+	switch(row){
+		case 0:
+			return HAL_GPIO_ReadPin(GPIOA, Keyboard_row1_Pin);
+			break;
+		case 1:
+			return HAL_GPIO_ReadPin(GPIOA, Keyboard_row2_Pin);
+			break;
+		case 2:
+			return HAL_GPIO_ReadPin(GPIOA, Keyboard_row3_Pin);
+			break;
+		case 3:
+			return HAL_GPIO_ReadPin(GPIOA, Keyboard_row4_Pin);
+			break;
+	}
+	return 1;
+}
+void check_keyboard(void){
+	memcpy
+	for (int col = 0; col < 3; col++) {
+	    set_column(col, GPIO_PIN_RESET);
+	    for (int row = 0; row < 4; row++) {
+	    	if(HAL_GetTick() - lastDebounceTime[(row) * 3 + col] > DEBOUNCE_TIME){
+				if (read_row(row) == GPIO_PIN_RESET) {
+					if(!keyState[(row) * 3 + col])
+						handle_key_press(col, row);
+					lastDebounceTime[(row) * 3 + col] = HAL_GetTick();
+				}
+				else{
+					handle_key_reset(col, row);
+				}
+	    	}
+	    }
+	    set_column(col, GPIO_PIN_SET);
+	}
+}

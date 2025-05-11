@@ -60,7 +60,6 @@ void state_machine_run(char input, bool changed_inp){
 	case ADD_NUMBER:
 	  break;
 	case SET_ALERT_TIME:
-		state_machine_set_alert_time();
 	  break;
 	case SET_NEW_PIN:
 	  break;

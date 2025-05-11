@@ -8,7 +8,6 @@
 #include "state_machine.h"
 #include <string.h>
 #include <stdio.h>
-#include <stdlib.h>
 
 static bool changed = true;
 static char str[14];
@@ -26,12 +25,10 @@ static char pin[16] = "";
 static uint32_t countdown_delay;
 
 
-uint32_t s_to_ms(uint32_t s){return s*1000UL;}
 
 void state_machine_init(uint8_t pin_len, char pin_inp[static pin_len]){
 	memcpy(pin, pin_inp, pin_len);
 	pin[pin_len] = '#';
-	countdown_delay = s_to_ms(COUNTDOWN_SECOND);
 
 }
 
@@ -60,7 +57,6 @@ void state_machine_run(char input, bool changed_inp){
 	case ADD_NUMBER:
 	  break;
 	case SET_ALERT_TIME:
-		state_machine_set_alert_time();
 	  break;
 	case SET_NEW_PIN:
 	  break;

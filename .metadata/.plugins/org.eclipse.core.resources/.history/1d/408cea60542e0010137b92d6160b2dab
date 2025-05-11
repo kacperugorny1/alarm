@@ -20,7 +20,7 @@
 
 
 #define COUNTDOWN_SECOND 120U
-
+#define COUNTDOWN_MS (COUNTDOWN_SECOND) * (1000UL)
 
 
 
@@ -38,13 +38,12 @@ typedef enum {
 extern alarm_state state;
 
 
-
+uint32_t inline s_to_ms(uint32_t s){return s*1000;};
 void state_machine_run(char input, bool changed_inp);
-void state_machine_init(uint8_t pin_len, char pin[static pin_len]); // TODO READ FROM FLASH
+void state_machine_init(uint8_t pin_len, char pin[static pin_len]);
 void state_machine_disarmed(void);
 void state_machine_armed(void);
 void state_machine_countdown(void);
-void state_machine_alert(void); //TODO GSM NOTIFICATION
-void state_machine_set_alert_time(void); //TODO WRITE TO FLASH
+void state_machine_alert(void);
 
 #endif

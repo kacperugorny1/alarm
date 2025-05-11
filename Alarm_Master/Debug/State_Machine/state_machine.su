@@ -1,6 +1,8 @@
-../State_Machine/state_machine.c:28:6:state_machine_init	16	static
-../State_Machine/state_machine.c:34:6:state_machine_run	16	static
-../State_Machine/state_machine.c:65:6:state_machine_armed	16	static
-../State_Machine/state_machine.c:115:6:state_machine_disarmed	8	static
-../State_Machine/state_machine.c:174:6:state_machine_countdown	24	static
-../State_Machine/state_machine.c:225:6:state_machine_alert	8	static
+../State_Machine/state_machine.c:29:10:s_to_ms	16	static
+../State_Machine/state_machine.c:31:6:state_machine_init	16	static
+../State_Machine/state_machine.c:38:6:state_machine_run	16	static
+../State_Machine/state_machine.c:70:6:state_machine_armed	16	static
+../State_Machine/state_machine.c:120:6:state_machine_disarmed	8	static
+../State_Machine/state_machine.c:179:6:state_machine_countdown	32	static
+../State_Machine/state_machine.c:230:6:state_machine_alert	8	static
+../State_Machine/state_machine.c:239:6:state_machine_set_alert_time	8	static

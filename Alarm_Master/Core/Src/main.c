@@ -17,9 +17,6 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include "keyboard.h"
-#include "lcd_driver.h"
-#include "state_machine.h"
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -27,6 +24,10 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+
+#include "keyboard.h"
+#include "state_machine.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -263,8 +264,10 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, Keyboard_col3_Pin|Keyboard_col1_Pin|Keyboard_col2_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pins : Keyboard_row2_Pin Keyboard_row3_Pin Keyboard_row4_Pin Keyboard_row1_Pin */
-  GPIO_InitStruct.Pin = Keyboard_row2_Pin|Keyboard_row3_Pin|Keyboard_row4_Pin|Keyboard_row1_Pin;
+  /*Configure GPIO pins : Keyboard_row2_Pin Keyboard_row3_Pin Keyboard_row4_Pin Keyboard_row1_Pin
+                           Alarm_Signal_Pin */
+  GPIO_InitStruct.Pin = Keyboard_row2_Pin|Keyboard_row3_Pin|Keyboard_row4_Pin|Keyboard_row1_Pin
+                          |Alarm_Signal_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);

@@ -7,13 +7,17 @@
 
 #include "state_machine.h"
 #include <string.h>
+#include <stdio.h>
 
 static bool changed = true;
 static char str[14];
 static uint8_t len;
 
 
-static uint32_t timestamp = 0;
+static uint32_t timestamp;
+static uint32_t timestamp_display_s;
+static uint32_t countdown_start;
+
 static char* set_alert_time = "****";
 static char* set_new_pin = "####";
 static char* menage_number = "#*#*";
@@ -21,6 +25,11 @@ static char pin[16] = "";
 
 
 
+void state_machine_init(uint8_t pin_len, char pin_inp[static pin_len]){
+	memcpy(pin, pin_inp, pin_len);
+	pin[pin_len] = '#';
+
+}
 
 void state_machine_run(char input, bool changed_inp){
 	if(changed_inp){
@@ -32,8 +41,10 @@ void state_machine_run(char input, bool changed_inp){
 		state_machine_disarmed();
 	  break;
 	case ARMED:
+		state_machine_armed();
 	  break;
 	case ARMED_COUNTDOWN:
+		state_machine_countdown();
 	  break;
 	case ALERT_SMS:
 	  break;
@@ -50,12 +61,55 @@ void state_machine_run(char input, bool changed_inp){
 	}
 }
 
-void state_machine_init(uint8_t pin_len, char pin_inp[static pin_len]){
-	memcpy(pin,pin_inp, pin_len);
-	pin[pin_len] = '#';
+void state_machine_armed(void){
+	GPIO_PinState singal_state = HAL_GPIO_ReadPin(Alarm_Signal_GPIO_Port, Alarm_Signal_Pin);
+	if(changed == true || !singal_state || HAL_GetTick() - timestamp > TIME_PER_SYMBOL){
+		if(len == 0 && changed){
+			changed = false;
+			lcd_clear();
+			lcd_put_cur(0, 0);
+			lcd_send_string ("ARMED");
+			lcd_put_cur(1, 0);
+			lcd_send_string("PIN TO DISARM");
+		}
+		else if(!singal_state){
+			state = ARMED_COUNTDOWN;
+			memset(str,0,14);
+			len = 0;
+			changed = true;
+			countdown_start = HAL_GetTick();
+		}
+		else if(len != 0){
+			lcd_clear();
+			lcd_put_cur(0, 0);
+			lcd_send_string("DISARM");
+			lcd_put_cur(1, 0);
+			str[len] = '\0';
+			lcd_send_string(str);
+			if(strcmp(str,pin) == 0){
+				state = DISARMED;
+				memset(str,0,14);
+				len = 0;
+				changed = true;
+			}
+			else if(str[len - 1] == '#' || len == 14 || !changed){
+				lcd_clear();
+				lcd_put_cur(0, 0);
+				lcd_send_string ("WRONG PIN");
+				memset(str,0,14);
+				len = 0;
+				changed = true;
+				HAL_Delay(3000);
+			}
+			else{
+				timestamp = HAL_GetTick();
+				changed = false;
+			}
 
+		}
+
+	}
 }
-
 
 void state_machine_disarmed(void){
 	if(changed == true || HAL_GetTick() - timestamp > TIME_PER_SYMBOL){
@@ -70,7 +124,7 @@ void state_machine_disarmed(void){
 	  else if(len != 0){
 		  lcd_clear();
 		  lcd_put_cur(0, 0);
-		  lcd_send_string ("PIN:");
+		  lcd_send_string("DISARMED PIN");
 		  lcd_put_cur(1, 0);
 		  str[len] = '\0';
 		  lcd_send_string(str);
@@ -93,7 +147,7 @@ void state_machine_disarmed(void){
 			  changed = true;
 		  }
 		  else if(strcmp(str,menage_number) == 0){
-			  state = SET_ALERT_TIME;
+			  state = MENAGE_NUMBER;
 			  memset(str,0,14);
 			  len = 0;
 			  changed = true;
@@ -114,4 +168,54 @@ void state_machine_disarmed(void){
 		  }
 	  }
 	}
+}
+
+void state_machine_countdown(void){
+	if(HAL_GetTick() - countdown_start > COUNTDOWN_MS){
+		state = ALERT_SMS;
+		memset(str,0,14);
+		len = 0;
+		changed = true;
+	}
+	if(changed == true || HAL_GetTick() - timestamp > TIME_PER_SYMBOL || HAL_GetTick() - timestamp_display_s > 1000){
+		if(len == 0 && (changed || HAL_GetTick() - timestamp_display_s > 1000)){
+			timestamp_display_s = HAL_GetTick();
+			changed = false;
+			lcd_clear();
+			lcd_put_cur(0, 0);
+			char buf[14];
+			snprintf(buf, 14 ,"COUNTDOWN %lu s",(uint32_t)(COUNTDOWN_SECOND - (HAL_GetTick() - countdown_start)/1000));
+			lcd_send_string (buf);
+			lcd_put_cur(1, 0);
+			lcd_send_string("PIN TO DISARM");
+		}
+		else if(len != 0 && (HAL_GetTick() - timestamp > TIME_PER_SYMBOL || changed)){
+			lcd_clear();
+			lcd_put_cur(0, 0);
+			lcd_send_string("DISARM");
+			lcd_put_cur(1, 0);
+			str[len] = '\0';
+			lcd_send_string(str);
+			if(strcmp(str,pin) == 0){
+				state = DISARMED;
+				memset(str,0,14);
+				len = 0;
+				changed = true;
+			}
+			else if(str[len - 1] == '#' || len == 14 || !changed){
+				lcd_clear();
+				lcd_put_cur(0, 0);
+				lcd_send_string ("WRONG PIN");
+				memset(str,0,14);
+				len = 0;
+				changed = true;
+				HAL_Delay(3000);
+			}
+			else{
+				timestamp = HAL_GetTick();
+				changed = false;
+			}
+		}
+	}
+
 }

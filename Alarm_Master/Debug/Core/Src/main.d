@@ -1,5 +1,4 @@
-Core/Src/main.o: ../Core/Src/main.c \
- C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver/keyboard.h \
+Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -28,10 +27,10 @@ Core/Src/main.o: ../Core/Src/main.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
- C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver/lcd_driver.h \
+ C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver/keyboard.h \
  C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine/state_machine.h \
- ../Core/Inc/main.h
-C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver/keyboard.h:
+ C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver/lcd_driver.h
+../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
@@ -60,6 +59,6 @@ C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver/keyboard.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
-C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver/lcd_driver.h:
+C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver/keyboard.h:
 C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine/state_machine.h:
-../Core/Inc/main.h:
+C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver/lcd_driver.h:

@@ -12,14 +12,21 @@
 #include "lcd_driver.h"
 
 
+#define Alarm_Signal_Pin GPIO_PIN_15
+#define Alarm_Signal_GPIO_Port GPIOA
+
 #define SECOND_PER_SYMBOL 2U
-#define TIME_PER_SYMBOL (SECOND_PER_SYMBOL) * (1000U)
+#define TIME_PER_SYMBOL (SECOND_PER_SYMBOL) * (1000UL)
+
+
+#define COUNTDOWN_SECOND 120U
+#define COUNTDOWN_MS (COUNTDOWN_SECOND) * (1000UL)
 
 typedef enum {
-	ARMED,
+	ARMED,			//DONE
 	ARMED_COUNTDOWN,
 	ALERT_SMS,
-	DISARMED,
+	DISARMED,		//DONE
 	SET_NEW_PIN,
 	MENAGE_NUMBER,
 	ADD_NUMBER,
@@ -33,6 +40,7 @@ extern alarm_state state;
 void state_machine_run(char input, bool changed_inp);
 void state_machine_init(uint8_t pin_len, char pin[static pin_len]);
 void state_machine_disarmed(void);
-
+void state_machine_armed(void);
+void state_machine_countdown(void);
 
 #endif

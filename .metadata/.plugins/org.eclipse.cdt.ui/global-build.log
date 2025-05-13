@@ -1,4 +1,4 @@
-20:47:43 **** Incremental Build of configuration Debug for project Alarm_Master ****
+21:51:53 **** Incremental Build of configuration Debug for project Alarm_Master ****
 make -j12 all 
 arm-none-eabi-gcc "../State_Machine/state_machine.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"State_Machine/state_machine.d" -MT"State_Machine/state_machine.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "State_Machine/state_machine.o"
 arm-none-eabi-gcc -o "Alarm_Master.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\axeel\Desktop\alarm\Alarm_Master\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Alarm_Master.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -7,15 +7,15 @@ Finished building target: Alarm_Master.elf
 arm-none-eabi-size  Alarm_Master.elf 
 arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
    text	   data	    bss	    dec	    hex	filename
-  16324	    108	   2316	  18748	   493c	Alarm_Master.elf
+  17048	    108	   2324	  19480	   4c18	Alarm_Master.elf
 Finished building: default.size.stdout
  
 Finished building: Alarm_Master.list
  
-20:47:46 **** Incremental Build of configuration Debug for project Alarm_Master ****
+21:51:57 **** Incremental Build of configuration Debug for project Alarm_Master ****
 make -j12 all 
 arm-none-eabi-size  Alarm_Master.elf 
    text	   data	    bss	    dec	    hex	filename
-  16324	    108	   2316	  18748	   493c	Alarm_Master.elf
+  17048	    108	   2324	  19480	   4c18	Alarm_Master.elf
 Finished building: default.size.stdout
  

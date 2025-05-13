@@ -14,6 +14,7 @@
 static bool changed = true;
 static char str[14];
 static uint8_t len;
+static uint8_t id;
 
 
 static uint32_t timestamp;
@@ -85,10 +86,12 @@ void state_machine_run(char input){
 		state_machine_alert();
 	  break;
 	case MENAGE_NUMBER:
+		state_machine_menage_number();
 	  break;
 	case REMOVE_NUMBER:
 	  break;
-	case ADD_NUMBER:
+	case REPLACE_NUMBER:
+		state_machine_replace_number();
 	  break;
 	case SET_ALERT_TIME:
 		state_machine_set_alert_time();
@@ -288,4 +291,64 @@ void state_machine_set_new_pin(void){
 		}
 	}
 }
+
+void state_machine_menage_number(void){
+	static char code[4] = "";
+	bool code_add = false;
+	if(changed == true){
+		changed = false;
+		if(!*str) id = 0;
+		else if(*str == '8') id = (id + 1) % 3;
+		else if(*str == '2' && id > 0) id = id - 1;
+		else if(*str == '2') id = 2;
+		else if(*str == '*') change_state(DISARMED);
+		else{
+			code[strlen(code)] = *str;
+			code_add = true;
+			if(strcmp(code, "7777") == 0)//REPLACE
+				change_state(REPLACE_NUMBER);
+			else if(strcmp(code,"3333") == 0)//DELETE
+			{
+				for(int i = 0; i < 16; ++i){
+					numbers[id*16 + i] = '\0';
+				}
+				save_new_state();
+			}
+		}
+		*str = '\0';
+		len = 0;
+		if(!code_add) memset(code,0,4);
+
+		char line[14] = "";
+		snprintf(line, 14, "->%d.", id + 1);
+		memcpy(line+4, numbers + 16*id, 9);
+		lcd_clear();
+		lcd_put_cur(0, 0);
+		lcd_send_string(line);
+		lcd_put_cur(1, 0);
+		snprintf(line, 14, "  %d.", (id + 1)%3 + 1);
+		memcpy(line + 4, numbers + 16*((id+1)%3), 9);
+		lcd_send_string(line);
+	}
+}
+
+void state_machine_replace_number(void){
+	if(changed == true){
+		changed = false;
+		lcd_clear();
+		lcd_put_cur(0, 0);
+		lcd_send_string("ADD NUMBER #-save");
+		lcd_put_cur(1, 0);
+		str[len] = '\0';
+		lcd_send_string(str);
+
+		if(str[len - 1] == '*' || len > 10 || (len != 10 && str[len - 1] == '#')) change_state(MENAGE_NUMBER);
+		else if(str[len - 1] == '#'){
+			memcpy(numbers + id * 16, str, 9);
+			save_new_state();
+			change_state(MENAGE_NUMBER);
+		}
+	}
+}
+
 

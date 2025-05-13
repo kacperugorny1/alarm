@@ -26,13 +26,12 @@
 typedef enum {
 	ARMED,			//DONE //TODO ALERT RF SPI
 	ARMED_COUNTDOWN, //DONE
-	ALERT_SMS,		//TODO GSM MODULE
+	ALERT_SMS,		//TODO GSM MODULE + CODE
 	DISARMED,		//DONE
-	SET_NEW_PIN,	//TODO FLASH + CODE
-	MENAGE_NUMBER,	//TODO FLASH + CODE
-	ADD_NUMBER,		//TODO FLASH + CODE
-	REMOVE_NUMBER,	//TODO FLASH + CODE
-	SET_ALERT_TIME	//TODO FLASH + CODE
+	SET_NEW_PIN,	//DONE
+	MENAGE_NUMBER,	//DONE
+	REPLACE_NUMBER,	//DONE
+	SET_ALERT_TIME	//DONE
 } alarm_state;
 extern alarm_state state;
 
@@ -43,8 +42,10 @@ void state_machine_init(char data_blob[64]);
 void state_machine_disarmed(void);
 void state_machine_armed(void);
 void state_machine_countdown(void);
-void state_machine_alert(void); //TODO GSM NOTIFICATION
+void state_machine_alert(void);
 void state_machine_set_alert_time(void);
 void state_machine_set_new_pin(void);
+void state_machine_menage_number(void);
+void state_machine_replace_number(void);
 
 #endif

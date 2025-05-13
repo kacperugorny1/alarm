@@ -4,5 +4,5 @@
 ../State_Machine/state_machine.c:80:6:state_machine_armed	16	static
 ../State_Machine/state_machine.c:130:6:state_machine_disarmed	8	static
 ../State_Machine/state_machine.c:189:6:state_machine_countdown	32	static
-../State_Machine/state_machine.c:240:6:state_machine_alert	8	static
-../State_Machine/state_machine.c:249:6:state_machine_set_alert_time	8	static
+../State_Machine/state_machine.c:239:6:state_machine_alert	8	static
+../State_Machine/state_machine.c:248:6:state_machine_set_alert_time	8	static

@@ -132,8 +132,9 @@ int main(void)
 		  else if(x == 10) x = '*';
 		  else if(x == 11) x = '0';
 		  else if(x == 12) x = '#';
+		  state_machine_run(x);
 	  }
-	  state_machine_run(x);
+	  else state_machine_run(0);
 
     /* USER CODE END WHILE */
 

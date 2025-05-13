@@ -45,8 +45,8 @@ void state_machine_init(char data_blob[64]){
 
 }
 
-void state_machine_run(char input){
-	if(input){
+void state_machine_run(char input, bool changed_inp){
+	if(changed_inp){
 		changed = true;
 		str[len++] = input;
 	}

@@ -1,0 +1,18 @@
+/*
+ * flash_interface.h
+ *
+ *  Created on: May 13, 2025
+ *      Author: axeel
+ */
+
+#ifndef FLASH_INTERFACE_H_
+#define FLASH_INTERFACE_H_
+
+#include "stm32f4xx_hal.h"
+
+void flash_write(uint32_t addr, char* data, size_t n);
+void flash_read(uint32_t addr, char* data, size_t n);
+
+
+
+#endif /* FLASH_INTERFACE_H_ */

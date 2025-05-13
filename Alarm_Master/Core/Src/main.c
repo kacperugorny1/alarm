@@ -27,6 +27,7 @@
 
 #include "keyboard.h"
 #include "state_machine.h"
+#include "flash_interface.h"
 
 /* USER CODE END Includes */
 
@@ -102,8 +103,16 @@ int main(void)
   MX_I2C1_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
+  char data_in[65] = "000000072144293400000006096035800000000665249258codecodetimetime";
+
+  char data_out[64];
+
   lcd_init(hi2c1);
   state_machine_init(4, "1235");
+//  flash_write_erase_sector7();
+//  flash_write_multiple_word(0x08060000, (uint32_t *)data_in, 16);
+//  flash_read_n_words(0x08060000, (uint32_t *)data_out, 16);
+
 
   /* USER CODE END 2 */
 

@@ -1,0 +1,36 @@
+/*
+ * flash_interface.c
+ *
+ *  Created on: May 13, 2025
+ *      Author: axeel
+ */
+
+#include "flash_interface.h"
+
+bool flash_write_double_word(uint32_t addr, void* data){
+
+	FLASH->CR |= FLASH_CR_PSIZE_0 | FLASH_CR_PSIZE_1;
+	if(FLASH->SR & FLASH_SR_BSY) return false;
+	__disable_irq();
+	FLASH->CR |= FLASH_CR_PG;
+	FLASH->KEYR = 0x45670123;
+	FLASH->KEYR = 0xCDEF89AB;
+
+	*(uint64_t *)addr = *(uint64_t *)data;
+
+
+	while(FLASH->SR & FLASH_SR_BSY) ;
+	FLASH->CR |= FLASH_CR_LOCK;
+	__enable_irq();
+	FLASH->CR &= ~FLASH_CR_PG;
+
+	return true;
+}
+
+
+
+void flash_read_double_word(uint32_t addr, void* data){
+
+
+
+}

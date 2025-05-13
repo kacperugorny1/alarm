@@ -1,0 +1,21 @@
+/*
+ * flash_interface.h
+ *
+ *  Created on: May 13, 2025
+ *      Author: axeel
+ */
+
+#ifndef FLASH_INTERFACE_H_
+#define FLASH_INTERFACE_H_
+
+#include "stm32f4xx_hal.h"
+#include <stdbool.h>
+
+void flash_write_erase_sector7();
+bool flash_write_multiple_word(uint32_t addr, uint32_t* data);
+bool flash_write_word(uint32_t addr, void* data);
+void flash_read_word(uint32_t addr, void* data);
+
+
+
+#endif /* FLASH_INTERFACE_H_ */

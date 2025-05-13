@@ -1,0 +1,14 @@
+/*
+ * flash_interface.c
+ *
+ *  Created on: May 13, 2025
+ *      Author: axeel
+ */
+
+
+
+void flash_write(uint32_t addr, char* data, size_t n){
+
+
+
+}

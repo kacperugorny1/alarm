@@ -19,7 +19,6 @@
 #define TIME_PER_SYMBOL (SECOND_PER_SYMBOL) * (1000UL)
 
 
-#define COUNTDOWN_SECOND 120U
 
 
 
@@ -40,7 +39,7 @@ extern alarm_state state;
 
 
 void state_machine_run(char input, bool changed_inp);
-void state_machine_init(uint8_t pin_len, char pin[static pin_len]); // TODO READ FROM FLASH
+void state_machine_init(char data_blob[64]); // TODO READ FROM FLASH
 void state_machine_disarmed(void);
 void state_machine_armed(void);
 void state_machine_countdown(void);

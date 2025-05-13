@@ -13,7 +13,7 @@
 
 void flash_write_erase_sector7();
 void flash_write_multiple_word(uint32_t addr, uint32_t* data, size_t num);
-void flash_read_n_words(uint32_t addr, uint32_t* data, size_t n);
+void flash_read_multiple_words(uint32_t addr, uint32_t* data, size_t n);
 
 //void flash_write_word(uint32_t addr, void* data); useless
 

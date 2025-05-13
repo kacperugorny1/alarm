@@ -22,16 +22,26 @@ static uint32_t countdown_start;
 static char* set_alert_time = "****";
 static char* set_new_pin = "####";
 static char* menage_number = "#*#*";
-static char pin[16] = "";
+static char pin[9] = "";
+static char numbers[48];
+
 static uint32_t countdown_delay;
 
 
 uint32_t s_to_ms(uint32_t s){return s*1000UL;}
 
-void state_machine_init(uint8_t pin_len, char pin_inp[static pin_len]){
-	memcpy(pin, pin_inp, pin_len);
-	pin[pin_len] = '#';
-	countdown_delay = s_to_ms(COUNTDOWN_SECOND);
+void state_machine_init(char data_blob[64]){
+	char temp[8];
+	for(size_t i = 0; i < 64; ++i)
+		if(data_blob[i] == '*') data_blob[i] = '\0';
+	memcpy(numbers, data_blob, 48);
+	memcpy(pin, data_blob + 48, 8);
+	memcpy(temp, data_blob + 56, 8);
+
+
+	countdown_delay = strtol(temp, NULL, 10);
+	pin[strlen(pin)] = '#';
+	countdown_delay = s_to_ms(countdown_delay);
 
 }
 

@@ -103,16 +103,22 @@ int main(void)
   MX_I2C1_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
-  char data_in[65] = "000000072144293400000006096035800000000665249258codecodetimetime";
 
-  char data_out[64];
 
-  lcd_init(hi2c1);
-  state_machine_init(4, "1235");
+  //INIT WRITE next 4 lines
+//  HAL_Delay(1000);
+//  char data_in[65] = "************************************************1235****120*****";
 //  flash_write_erase_sector7();
 //  flash_write_multiple_word(0x08060000, (uint32_t *)data_in, 16);
-//  flash_read_n_words(0x08060000, (uint32_t *)data_out, 16);
 
+  //READOUT
+  {
+	char data_out[64];
+	flash_read_multiple_words(0x08060000, (uint32_t *)data_out, 16);
+	//PARSING TO VARIABLES
+	state_machine_init(data_out);
+  }
+  lcd_init(hi2c1);
 
   /* USER CODE END 2 */
 

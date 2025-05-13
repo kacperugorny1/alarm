@@ -68,7 +68,7 @@ void flash_write_multiple_word(uint32_t addr, uint32_t* data, size_t num){
 
 
 
-void flash_read_n_words(uint32_t addr, uint32_t* data, size_t n){
+void flash_read_multiple_words(uint32_t addr, uint32_t* data, size_t n){
 	for(size_t i = 0; i < n; ++i){
 		*(data + i) = *((uint32_t*)addr + i);
 	}

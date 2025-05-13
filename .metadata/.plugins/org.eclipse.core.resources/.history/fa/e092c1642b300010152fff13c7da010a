@@ -237,7 +237,10 @@ void state_machine_countdown(void){
 void state_machine_alert(void){
 
 	//TODO GSM SEND
-	change_state(ARMED);
+	state = ARMED;
+	memset(str,0,14);
+	len = 0;
+	changed = true;
 }
 
 void state_machine_set_alert_time(void){

@@ -1,10 +1,10 @@
-20:29:30 **** Incremental Build of configuration Debug for project Alarm_Master ****
+20:47:46 **** Incremental Build of configuration Debug for project Alarm_Master ****
 make -j12 all 
 arm-none-eabi-size  Alarm_Master.elf 
    text	   data	    bss	    dec	    hex	filename
-  16268	    108	   2316	  18692	   4904	Alarm_Master.elf
+  16324	    108	   2316	  18748	   493c	Alarm_Master.elf
 Finished building: default.size.stdout
  
 
-20:29:30 Build Finished. 0 errors, 0 warnings. (took 243ms)
+20:47:46 Build Finished. 0 errors, 0 warnings. (took 243ms)
 

@@ -21,8 +21,8 @@ static uint32_t timestamp_display_s;
 static uint32_t countdown_start;
 
 static char* set_alert_time = "****";
-static char* set_new_pin = "**00";
-static char* menage_number = "0*0*";
+static char* set_new_pin = "####";
+static char* menage_number = "#*#*";
 static char pin[9] = "";
 static char numbers[48];
 
@@ -39,13 +39,6 @@ void save_new_state(void){
 	flash_write_erase_sector7();
 	flash_write_multiple_word(0x08060000, (uint32_t *)to_save, 16);
 
-}
-
-static inline void change_state(alarm_state new_state){
-	state = new_state;
-	memset(str,0,14);
-	len = 0;
-	changed = true;
 }
 
 uint32_t s_to_ms(uint32_t s){return s*1000UL;}
@@ -94,7 +87,6 @@ void state_machine_run(char input){
 		state_machine_set_alert_time();
 	  break;
 	case SET_NEW_PIN:
-		state_machine_set_new_pin();
 	  break;
 	}
 }
@@ -111,7 +103,10 @@ void state_machine_armed(void){
 			lcd_send_string("PIN TO DISARM");
 		}
 		else if(!singal_state){
-			change_state(ARMED_COUNTDOWN);
+			state = ARMED_COUNTDOWN;
+			memset(str,0,14);
+			len = 0;
+			changed = true;
 			countdown_start = HAL_GetTick();
 		}
 		else if(len != 0){
@@ -122,7 +117,10 @@ void state_machine_armed(void){
 			str[len] = '\0';
 			lcd_send_string(str);
 			if(strcmp(str,pin) == 0){
-				change_state(DISARMED);
+				state = DISARMED;
+				memset(str,0,14);
+				len = 0;
+				changed = true;
 			}
 			else if(str[len - 1] == '#' || len == 14 || !changed){
 				lcd_clear();
@@ -161,16 +159,28 @@ void state_machine_disarmed(void){
 		  str[len] = '\0';
 		  lcd_send_string(str);
 		  if(strcmp(str,pin) == 0){
-			  change_state(ARMED);
+			  state = ARMED;
+			  memset(str,0,14);
+			  len = 0;
+			  changed = true;
 		  }
 		  else if(strcmp(str,set_new_pin) == 0){
-			  change_state(SET_NEW_PIN);
+			  state = SET_NEW_PIN;
+			  memset(str,0,14);
+			  len = 0;
+			  changed = true;
 		  }
 		  else if(strcmp(str,set_alert_time) == 0){
-			  change_state(SET_ALERT_TIME);
+			  state = SET_ALERT_TIME;
+			  memset(str,0,14);
+			  len = 0;
+			  changed = true;
 		  }
 		  else if(strcmp(str,menage_number) == 0){
-			  change_state(MENAGE_NUMBER);
+			  state = MENAGE_NUMBER;
+			  memset(str,0,14);
+			  len = 0;
+			  changed = true;
 		  }
 		  else if(str[len - 1] == '#' || len == 14 || !changed){
 			  lcd_clear();
@@ -192,7 +202,10 @@ void state_machine_disarmed(void){
 
 void state_machine_countdown(void){
 	if(HAL_GetTick() - countdown_start > countdown_delay){
-		change_state(ALERT_SMS);
+		state = ALERT_SMS;
+		memset(str,0,14);
+		len = 0;
+		changed = true;
 	}
 	if(changed == true || HAL_GetTick() - timestamp > TIME_PER_SYMBOL || HAL_GetTick() - timestamp_display_s > 1000){
 		if(len == 0 && (changed || HAL_GetTick() - timestamp_display_s > 1000)){
@@ -214,7 +227,10 @@ void state_machine_countdown(void){
 			str[len] = '\0';
 			lcd_send_string(str);
 			if(strcmp(str,pin) == 0){
-				change_state(DISARMED);
+				state = DISARMED;
+				memset(str,0,14);
+				len = 0;
+				changed = true;
 			}
 			else if(str[len - 1] == '#' || len == 14 || !changed){
 				lcd_clear();
@@ -237,7 +253,10 @@ void state_machine_countdown(void){
 void state_machine_alert(void){
 
 	//TODO GSM SEND
-	change_state(ARMED);
+	state = ARMED;
+	memset(str,0,14);
+	len = 0;
+	changed = true;
 }
 
 void state_machine_set_alert_time(void){
@@ -246,44 +265,46 @@ void state_machine_set_alert_time(void){
 			changed = false;
 			lcd_clear();
 			lcd_put_cur(0, 0);
-			lcd_send_string ("TIME(S),#=SAVE");
+			lcd_send_string ("SET TIME(S),#=SAVE");
 		}
 		else if(len != 0){
 			lcd_put_cur(1, 0);
-			if(str[len - 1] == '*' || len > 9){
-				change_state(DISARMED);
-			}
+			if(str[len - 1] == '*') str[--len] = 0; //LEAVE
+			if(len > 9) {str = ""; len = 0;}
 			lcd_send_string(str);
 			if(str[len - 1] == '#'){
 				countdown_delay = s_to_ms(strtol(str, NULL, 10));
+				state = DISARMED;
+				memset(str,0,14);
+				len = 0;
+				changed = true;
 				save_new_state();
-
-				change_state(DISARMED);
 			}
 		}
 	}
 }
 
-void state_machine_set_new_pin(void){
+void state_machine_set_alert_time(void){
 	if(changed == true){
 		if(len == 0 && changed){
 			changed = false;
 			lcd_clear();
 			lcd_put_cur(0, 0);
-			lcd_send_string ("SET PIN,#=SAVE");
+			lcd_send_string ("SET TIME(S),#=SAVE");
 		}
 		else if(len != 0){
 			lcd_put_cur(1, 0);
-			if(str[len - 1] == '*' || len > 9){
-				change_state(DISARMED);
-			}
+			if(str[len - 1] == '*') str[--len] = 0; // LEAVE
+			if(len > 9) {str = ""; len = 0;}
 			lcd_send_string(str);
 			if(str[len - 1] == '#'){
-				memset(pin, 0, 9);
-				memcpy(pin,str,len);
+				memset(pin,0,)
+				countdown_delay = s_to_ms(strtol(str, NULL, 10));
+				state = DISARMED;
+				memset(str,0,14);
+				len = 0;
+				changed = true;
 				save_new_state();
-
-				change_state(DISARMED);
 			}
 		}
 	}

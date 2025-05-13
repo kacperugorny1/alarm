@@ -27,7 +27,7 @@ static char pin[9] = "";
 static char numbers[48];
 
 static uint32_t countdown_delay;
-//HELPER FUNCTIONS
+
 void save_new_state(void){
 	char to_save[64];
 	memset(to_save, 0, 64);
@@ -43,7 +43,6 @@ void save_new_state(void){
 
 uint32_t s_to_ms(uint32_t s){return s*1000UL;}
 
-//IMPLEMENTATIONS
 void state_machine_init(char data_blob[64]){
 	char temp[8];
 	for(size_t i = 0; i < 64; ++i)

@@ -44,6 +44,6 @@ void state_machine_disarmed(void);
 void state_machine_armed(void);
 void state_machine_countdown(void);
 void state_machine_alert(void); //TODO GSM NOTIFICATION
-void state_machine_set_alert_time(void);
+void state_machine_set_alert_time(void); //TODO WRITE TO FLASH
 
 #endif

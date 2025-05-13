@@ -6,7 +6,6 @@
  */
 
 #include "state_machine.h"
-#include "flash_interface.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,23 +26,10 @@ static char pin[9] = "";
 static char numbers[48];
 
 static uint32_t countdown_delay;
-//HELPER FUNCTIONS
-void save_new_state(void){
-	char to_save[64];
-	memset(to_save, 0, 64);
-	memcpy(to_save, numbers, 48);
-	memcpy(to_save + 48, pin, 8);
-	snprintf(to_save + 56, 8, "%ld", countdown_delay/1000);
-	for(size_t i = 0; i < 64; ++i)
-		if(to_save[i] == '\0' || to_save[i] == '#') to_save[i] = '*';
-	flash_write_erase_sector7();
-	flash_write_multiple_word(0x08060000, (uint32_t *)to_save, 16);
 
-}
 
 uint32_t s_to_ms(uint32_t s){return s*1000UL;}
 
-//IMPLEMENTATIONS
 void state_machine_init(char data_blob[64]){
 	char temp[8];
 	for(size_t i = 0; i < 64; ++i)
@@ -276,10 +262,19 @@ void state_machine_set_alert_time(void){
 				memset(str,0,14);
 				len = 0;
 				changed = true;
-				save_new_state();
 			}
 		}
 	}
 }
 
 
+void save_new_state(void){
+	char to_save[64];
+	memset(to_save, 0, 64);
+	memcpy(to_save, numbers, 48);
+	memcpy(to_save + 48, pin, 8);
+	snprintf(to_save + 56, 8, "%d", countdown_delay/1000);
+	//  flash_write_erase_sector7();
+	//  flash_write_multiple_word(0x08060000, (uint32_t *)data_in, 16);
+
+}

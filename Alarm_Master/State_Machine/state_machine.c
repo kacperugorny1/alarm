@@ -88,8 +88,6 @@ void state_machine_run(char input){
 	case MENAGE_NUMBER:
 		state_machine_menage_number();
 	  break;
-	case REMOVE_NUMBER:
-	  break;
 	case REPLACE_NUMBER:
 		state_machine_replace_number();
 	  break;

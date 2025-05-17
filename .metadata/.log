@@ -1131,3 +1131,18 @@ java.lang.Exception: Error finishing flash operation
 
 !ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-13 21:52:04.729
 !MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+!SESSION 2025-05-15 19:56:35.691 -----------------------------------------------
+eclipse.buildId=Version 1.15.0
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=pl_PL
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-05-15 19:57:08.509
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-05-15 19:57:08.522
+!MESSAGE Log4j2 initialized with config file C:\Users\axeel\Desktop\alarm\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-05-15 19:57:18.828
+!MESSAGE Started RMI Server, listening on port 41337

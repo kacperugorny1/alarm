@@ -1167,3 +1167,18 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY org.eclipse.cdt.core 1 0 2025-05-18 11:48:47.418
 !MESSAGE Indexed 'Alarm_slave' (18 sources, 82 headers) in 3.69 sec: 4,481 declarations; 19,298 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0084%)
+!SESSION 2025-05-18 13:44:02.012 -----------------------------------------------
+eclipse.buildId=Version 1.15.0
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=pl_PL
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-05-18 13:44:35.051
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-05-18 13:44:35.061
+!MESSAGE Log4j2 initialized with config file C:\Users\axeel\Desktop\alarm\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-05-18 13:44:42.696
+!MESSAGE Started RMI Server, listening on port 41337

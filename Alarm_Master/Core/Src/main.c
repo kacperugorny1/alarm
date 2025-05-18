@@ -123,6 +123,9 @@ int main(void)
 	state_machine_init(data_out);
   }
   lcd_init(hi2c1);
+  char data[100] = "AT";
+
+  printf("Hello\n");
 
   /* USER CODE END 2 */
 
@@ -315,6 +318,9 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, Keyboard_col3_Pin|Keyboard_col1_Pin|Keyboard_col2_Pin, GPIO_PIN_SET);
 
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(SPI_SW_CS_GPIO_Port, SPI_SW_CS_Pin, GPIO_PIN_RESET);
+
   /*Configure GPIO pins : Keyboard_row2_Pin Keyboard_row3_Pin Keyboard_row4_Pin Keyboard_row1_Pin
                            Alarm_Signal_Pin */
   GPIO_InitStruct.Pin = Keyboard_row2_Pin|Keyboard_row3_Pin|Keyboard_row4_Pin|Keyboard_row1_Pin
@@ -329,6 +335,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : SPI_SW_CS_Pin */
+  GPIO_InitStruct.Pin = SPI_SW_CS_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(SPI_SW_CS_GPIO_Port, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */

@@ -28,6 +28,7 @@ State_Machine/state_machine.o: ../State_Machine/state_machine.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver/lcd_driver.h \
  C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface/flash_interface.h
 ../State_Machine/state_machine.h:
@@ -59,5 +60,6 @@ State_Machine/state_machine.o: ../State_Machine/state_machine.c \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver/lcd_driver.h:
 C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface/flash_interface.h:

@@ -71,6 +71,8 @@ void Error_Handler(void);
 #define Keyboard_row1_GPIO_Port GPIOA
 #define Keyboard_col2_Pin GPIO_PIN_6
 #define Keyboard_col2_GPIO_Port GPIOA
+#define SPI_SW_CS_Pin GPIO_PIN_12
+#define SPI_SW_CS_GPIO_Port GPIOB
 #define Alarm_Signal_Pin GPIO_PIN_15
 #define Alarm_Signal_GPIO_Port GPIOA
 

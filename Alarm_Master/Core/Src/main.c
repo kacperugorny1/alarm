@@ -70,6 +70,43 @@ static void MX_USART1_UART_Init(void);
 
 
 alarm_state state = DISARMED;
+void write_nrf_register(uint8_t addr, uint8_t* data, uint8_t size){
+	uint8_t txData[12];
+	uint8_t rxData[12];
+	txData[0] = addr | 1<<5;
+	memcpy(txData + 1, data, size);
+
+	HAL_GPIO_WritePin(GPIOB, SPI_SW_CSN_Pin, GPIO_PIN_RESET);
+	HAL_SPI_TransmitReceive(&hspi2, txData, rxData, size + 1, HAL_MAX_DELAY);
+	HAL_GPIO_WritePin(GPIOB, SPI_SW_CSN_Pin, GPIO_PIN_SET);
+}
+
+void init_nrf_master(){
+	uint8_t data[12];
+	HAL_GPIO_WritePin(GPIOB, SPI_SW_CE_Pin, GPIO_PIN_RESET);
+	HAL_Delay(100);
+
+	//Shared settings
+	data[0] = 0x03; write_nrf_register(0x03, data, 1);
+	data[0] = 0x3C; write_nrf_register(0x05, data, 1);
+	data[0] = 0x27; write_nrf_register(0x06, data, 1);
+	data[0] = 0x01; write_nrf_register(0x1C, data, 1);
+	data[0] = 0x04; write_nrf_register(0x1D, data, 1);
+
+	//Master settings
+	data[0] = 0x0F; write_nrf_register(0x00, data, 1);
+	data[0] = 0x01; write_nrf_register(0x01, data, 1);
+	data[0] = 0x01; write_nrf_register(0x02, data, 1);
+
+
+	data[0] = 0x0A;
+	data[1] = 0x0B;
+	data[2] = 0x0C;
+	data[3] = 0x0D;
+	data[4] = 0x0E;
+	//write_nrf_register(0x10, data, 5);
+	write_nrf_register(0x0A, data, 5);
+}
 
 
 /* USER CODE END 0 */
@@ -123,7 +160,11 @@ int main(void)
 	state_machine_init(data_out);
   }
   lcd_init(hi2c1);
-  char data[100] = "AT";
+  char x;
+  init_nrf_master();
+  HAL_GPIO_WritePin(SPI_SW_CE_GPIO_Port, SPI_SW_CE_Pin, GPIO_PIN_SET);
+  while(HAL_GPIO_ReadPin(SPI_IRQ_GPIO_Port, SPI_IRQ_Pin));
+  HAL_GPIO_WritePin(SPI_SW_CE_GPIO_Port, SPI_SW_CE_Pin, GPIO_PIN_RESET);
 
   printf("Hello\n");
 
@@ -133,7 +174,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  char x = check_keyboard();
+	  x = check_keyboard();
 	  if(x){
 		  if(x < 10) x += '0';
 		  else if(x == 10) x = '*';

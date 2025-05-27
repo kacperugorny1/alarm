@@ -1,0 +1,8 @@
+../Core/Src/main.c:61:6:write_nrf_register	1
+../Core/Src/main.c:72:6:init_nrf_slave	1
+../Core/Src/main.c:99:6:transmit_nrf	3
+../Core/Src/main.c:121:5:main	2
+../Core/Src/main.c:173:6:SystemClock_Config	3
+../Core/Src/main.c:213:13:MX_SPI2_Init	2
+../Core/Src/main.c:253:13:MX_GPIO_Init	1
+../Core/Src/main.c:293:6:Error_Handler	1

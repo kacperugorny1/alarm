@@ -1,0 +1,10 @@
+19:05:09 **** Incremental Build of configuration Debug for project Alarm_slave ****
+make -j12 all 
+arm-none-eabi-size  Alarm_slave.elf 
+   text	   data	    bss	    dec	    hex	filename
+   9056	     12	   1668	  10736	   29f0	Alarm_slave.elf
+Finished building: default.size.stdout
+ 
+
+19:05:09 Build Finished. 0 errors, 0 warnings. (took 212ms)
+

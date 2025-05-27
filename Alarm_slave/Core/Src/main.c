@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -58,6 +58,60 @@ static void MX_SPI2_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+void write_nrf_register(uint8_t addr, uint8_t* data, uint8_t size){
+	uint8_t txData[12];
+	uint8_t rxData[12];
+	txData[0] = addr | 1<<5;
+	memcpy(txData + 1, data, size);
+
+	HAL_GPIO_WritePin(GPIOB, SPI_SW_CSN_Pin, GPIO_PIN_RESET);
+	HAL_SPI_TransmitReceive(&hspi2, txData, rxData, size + 1, HAL_MAX_DELAY);
+	HAL_GPIO_WritePin(GPIOB, SPI_SW_CSN_Pin, GPIO_PIN_SET);
+}
+
+void init_nrf_slave(){
+	uint8_t data[12];
+	HAL_GPIO_WritePin(GPIOB, SPI_SW_CE_Pin, GPIO_PIN_RESET);
+	HAL_Delay(100);
+
+	//Shared settings
+	data[0] = 0x03; write_nrf_register(0x03, data, 1);
+	data[0] = 0x3C; write_nrf_register(0x05, data, 1);
+	data[0] = 0x27; write_nrf_register(0x06, data, 1);
+	data[0] = 0x01; write_nrf_register(0x1C, data, 1);
+	data[0] = 0x04; write_nrf_register(0x1D, data, 1);
+
+	//Slave settings
+	data[0] = 0x0E; write_nrf_register(0x00, data, 1);
+	data[0] = 0x01; write_nrf_register(0x01, data, 1);
+	data[0] = 0x01; write_nrf_register(0x02, data, 1);
+	data[0] = 0x0F;	write_nrf_register(0x04, data, 1);
+
+	data[0] = 0x0A;
+	data[1] = 0x0B;
+	data[2] = 0x0C;
+	data[3] = 0x0D;
+	data[4] = 0x0E;
+	write_nrf_register(0x10, data, 5);
+	write_nrf_register(0x0A, data, 5);
+}
+
+void transmit_nrf(uint8_t size, char data[static size]){
+	uint8_t data_to_send[33] = {0b10100000,};
+	uint8_t data_to_receive[33] = {0b10100000,};
+	if(size == 0 || size > 32) return;
+
+	memcpy(data_to_send + 1, data, size);
+
+	HAL_GPIO_WritePin(GPIOB, SPI_SW_CSN_Pin, GPIO_PIN_RESET);
+	HAL_SPI_TransmitReceive(&hspi2, data_to_send, data_to_receive, size + 1, HAL_MAX_DELAY);
+	HAL_GPIO_WritePin(GPIOB, SPI_SW_CSN_Pin, GPIO_PIN_SET);
+
+	HAL_GPIO_WritePin(GPIOB, SPI_SW_CE_Pin, GPIO_PIN_SET);
+	HAL_Delay(1);
+	HAL_GPIO_WritePin(GPIOB, SPI_SW_CE_Pin, GPIO_PIN_RESET);
+
+}
 /* USER CODE END 0 */
 
 /**
@@ -91,6 +145,9 @@ int main(void)
   MX_GPIO_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
+  HAL_Delay(500);
+  init_nrf_slave();
+
 
   /* USER CODE END 2 */
 
@@ -98,6 +155,10 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  HAL_Delay(1000);
+	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_input_Pin) == 1)
+		  transmit_nrf(1, "a");
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -163,7 +224,7 @@ static void MX_SPI2_Init(void)
   hspi2.Instance = SPI2;
   hspi2.Init.Mode = SPI_MODE_MASTER;
   hspi2.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi2.Init.DataSize = SPI_DATASIZE_4BIT;
+  hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
   hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi2.Init.NSS = SPI_NSS_SOFT;

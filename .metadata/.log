@@ -1610,3 +1610,253 @@ Reason: (0) Unknown. Please check power and cabling to target.
 
 !ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 19:05:04.401
 !MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 19:24:27.338
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 104 2025-05-27 19:39:39.857
+!MESSAGE Program file does not exist
+!STACK 0
+java.io.FileNotFoundException: C:\Users\axeel\Desktop\alarm\Alarm_slave\Debug\Alarm_slave.elf not found
+	at org.eclipse.cdt.dsf.gdb.launching.LaunchUtils.verifyProgramPath(LaunchUtils.java:130)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.checkBinaryDetails(GdbLaunchDelegate.java:330)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:152)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:336)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:805)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:716)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1040)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 104 2025-05-27 19:39:39.857
+!MESSAGE C:\Users\axeel\Desktop\alarm\Alarm_slave\Debug\Alarm_slave.elf not found
+!STACK 0
+java.io.FileNotFoundException: C:\Users\axeel\Desktop\alarm\Alarm_slave\Debug\Alarm_slave.elf not found
+	at org.eclipse.cdt.dsf.gdb.launching.LaunchUtils.verifyProgramPath(LaunchUtils.java:130)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.checkBinaryDetails(GdbLaunchDelegate.java:330)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:152)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:336)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:805)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:716)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1040)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 19:45:41.924
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 19:46:43.538
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 19:47:36.722
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 4 0 2025-05-27 19:47:36.738
+!MESSAGE SWVClient - Failed to connect to Host: localhost Port: 61235
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 4 0 2025-05-27 19:47:36.738
+!MESSAGE SWV Session manager - Create session failed
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 19:47:55.122
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 4 0 2025-05-27 19:47:55.137
+!MESSAGE SWVClient - Failed to connect to Host: localhost Port: 61235
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 4 0 2025-05-27 19:47:55.137
+!MESSAGE SWV Session manager - Create session failed
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 4 0 2025-05-27 19:48:03.967
+!MESSAGE SWV Client received I/O Exception: Connection reset... trying to reconnect
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 4 0 2025-05-27 19:48:03.968
+!MESSAGE SWVClient - Failed to connect to Host: localhost Port: 61235
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 4 0 2025-05-27 19:48:03.969
+!MESSAGE Failed to reconnect and read data
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:579)
+	at java.base/sun.nio.ch.Net.connect(Net.java:568)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at java.base/java.net.Socket.connect(Socket.java:583)
+	at java.base/java.net.Socket.<init>(Socket.java:507)
+	at java.base/java.net.Socket.<init>(Socket.java:287)
+	at com.st.stm32cube.ide.mcu.debug.swv.core.SWVClient.connect(SWVClient.java:168)
+	at com.st.stm32cube.ide.mcu.debug.swv.core.SWVClient.getNextByte(SWVClient.java:283)
+	at com.st.stm32cube.ide.mcu.debug.swv.core.SWVClient.run(SWVClient.java:313)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 4 0 2025-05-27 19:48:04.049
+!MESSAGE SWV Client received I/O Exception: Connection reset... trying to reconnect
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 4 0 2025-05-27 19:48:04.050
+!MESSAGE SWVClient - Failed to connect to Host: localhost Port: 61235
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 4 0 2025-05-27 19:48:04.051
+!MESSAGE Failed to reconnect and read data
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:579)
+	at java.base/sun.nio.ch.Net.connect(Net.java:568)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at java.base/java.net.Socket.connect(Socket.java:583)
+	at java.base/java.net.Socket.<init>(Socket.java:507)
+	at java.base/java.net.Socket.<init>(Socket.java:287)
+	at com.st.stm32cube.ide.mcu.debug.swv.core.SWVClient.connect(SWVClient.java:168)
+	at com.st.stm32cube.ide.mcu.debug.swv.core.SWVClient.getNextByte(SWVClient.java:283)
+	at com.st.stm32cube.ide.mcu.debug.swv.core.SWVClient.run(SWVClient.java:313)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 19:48:27.920
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 19:53:48.568
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 20:11:59.266
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 20:18:17.309
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 20:19:06.653
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 20:21:38.283
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 20:34:50.325
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2025-05-27 20:51:58.266
+!MESSAGE Error in final launch sequence:
+
+Setup exceptions
+!STACK 1
+org.eclipse.core.runtime.CoreException: Setup exceptions
+	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:112)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:252)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:336)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:805)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:716)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1040)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 com.st.stm32cube.ide.mcu.debug.launch 4 0 2025-05-27 20:51:58.266
+!MESSAGE Setup exceptions
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 20:52:08.932
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 104 2025-05-27 21:03:29.201
+!MESSAGE Program file does not exist
+!STACK 0
+java.io.FileNotFoundException: C:\Users\axeel\Desktop\alarm\Alarm_slave\Debug\Alarm_slave.elf not found
+	at org.eclipse.cdt.dsf.gdb.launching.LaunchUtils.verifyProgramPath(LaunchUtils.java:130)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.checkBinaryDetails(GdbLaunchDelegate.java:330)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:152)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:336)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:805)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:716)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1040)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 104 2025-05-27 21:03:29.201
+!MESSAGE C:\Users\axeel\Desktop\alarm\Alarm_slave\Debug\Alarm_slave.elf not found
+!STACK 0
+java.io.FileNotFoundException: C:\Users\axeel\Desktop\alarm\Alarm_slave\Debug\Alarm_slave.elf not found
+	at org.eclipse.cdt.dsf.gdb.launching.LaunchUtils.verifyProgramPath(LaunchUtils.java:130)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.checkBinaryDetails(GdbLaunchDelegate.java:330)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:152)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:336)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:805)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:716)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1040)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 104 2025-05-27 21:03:57.357
+!MESSAGE Program file does not exist
+!STACK 0
+java.io.FileNotFoundException: C:\Users\axeel\Desktop\alarm\Alarm_slave\Debug\Alarm_slave.elf not found
+	at org.eclipse.cdt.dsf.gdb.launching.LaunchUtils.verifyProgramPath(LaunchUtils.java:130)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.checkBinaryDetails(GdbLaunchDelegate.java:330)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:152)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:336)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:805)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:716)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1040)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 104 2025-05-27 21:03:57.357
+!MESSAGE C:\Users\axeel\Desktop\alarm\Alarm_slave\Debug\Alarm_slave.elf not found
+!STACK 0
+java.io.FileNotFoundException: C:\Users\axeel\Desktop\alarm\Alarm_slave\Debug\Alarm_slave.elf not found
+	at org.eclipse.cdt.dsf.gdb.launching.LaunchUtils.verifyProgramPath(LaunchUtils.java:130)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.checkBinaryDetails(GdbLaunchDelegate.java:330)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:152)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:336)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:805)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:716)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1040)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1243)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 21:06:52.982
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 21:09:58.419
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 21:18:27.517
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 4 0 2025-05-27 21:18:46.390
+!MESSAGE SWV Client received I/O Exception: Connection reset... trying to reconnect
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 4 0 2025-05-27 21:18:46.391
+!MESSAGE SWVClient - Failed to connect to Host: localhost Port: 61235
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 4 0 2025-05-27 21:18:46.391
+!MESSAGE Failed to reconnect and read data
+!STACK 0
+java.net.ConnectException: Connection refused: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:579)
+	at java.base/sun.nio.ch.Net.connect(Net.java:568)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at java.base/java.net.Socket.connect(Socket.java:583)
+	at java.base/java.net.Socket.<init>(Socket.java:507)
+	at java.base/java.net.Socket.<init>(Socket.java:287)
+	at com.st.stm32cube.ide.mcu.debug.swv.core.SWVClient.connect(SWVClient.java:168)
+	at com.st.stm32cube.ide.mcu.debug.swv.core.SWVClient.getNextByte(SWVClient.java:283)
+	at com.st.stm32cube.ide.mcu.debug.swv.core.SWVClient.run(SWVClient.java:313)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 21:18:58.681
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 21:19:48.629
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-05-27 21:22:43.844
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 100000000; div: 50

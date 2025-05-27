@@ -3061,6 +3061,7 @@
 2025-05-27 17:41:32,218 [INFO] ThirdParty:978 - Integrity check success = true
 2025-05-27 17:41:32,218 [INFO] IntegrityCheckThread:100 - exiting critical section [integrity check]
 2025-05-27 17:41:32,221 [INFO] IntegrityCheckThread:103 - End integrity checks thread
+<<<<<<< HEAD
 2025-05-27 19:18:14,006 [INFO] McuFinderGlobals:63 - Set McuFinder mode to 2 (CubeIDE integrated)
 2025-05-27 19:18:14,034 [INFO] MainUpdater:2873 - connection check result : 10
 2025-05-27 19:18:14,041 [INFO] MainUpdater:2873 - connection check result : 10
@@ -5059,3 +5060,10 @@ java.lang.NullPointerException: Cannot invoke "javax.swing.JTextField.getText()"
 2025-05-27 20:41:48,423 [INFO] ProjectBuilder:3034 - Time for Copy CMSIS : 0mS.
 2025-05-27 20:41:48,425 [INFO] ProjectBuilder:3034 - Time for Copy CMSIS : 0mS.
 2025-05-27 21:26:59,204 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+=======
+2025-05-27 23:06:56,809 [INFO] Activator:176 - 
+
+
+2025-05-27 23:06:56,811 [INFO] Activator:177 - !SESSION log4j initialized
+2025-05-27 23:07:00,734 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+>>>>>>> 0207771 (switch changed to function array)

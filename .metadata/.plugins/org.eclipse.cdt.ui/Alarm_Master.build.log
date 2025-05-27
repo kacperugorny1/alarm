@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 21:22:35 **** Incremental Build of configuration Debug for project Alarm_Master ****
+=======
+23:25:04 **** Incremental Build of configuration Debug for project Alarm_Master ****
+>>>>>>> 0207771 (switch changed to function array)
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
@@ -11,11 +15,19 @@ Finished building target: Alarm_Master.elf
 arm-none-eabi-size  Alarm_Master.elf 
 arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
    text	   data	    bss	    dec	    hex	filename
+<<<<<<< HEAD
   21736	    104	   2304	  24144	   5e50	Alarm_Master.elf
+=======
+  20800	    152	   2400	  23352	   5b38	Alarm_Master.elf
+>>>>>>> 0207771 (switch changed to function array)
 Finished building: default.size.stdout
  
 Finished building: Alarm_Master.list
  
 
+<<<<<<< HEAD
 21:22:35 Build Finished. 0 errors, 1 warnings. (took 749ms)
+=======
+23:25:04 Build Finished. 0 errors, 0 warnings. (took 251ms)
+>>>>>>> 0207771 (switch changed to function array)
 

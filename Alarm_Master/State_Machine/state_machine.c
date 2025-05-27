@@ -72,32 +72,10 @@ void state_machine_run(char input){
 		changed = true;
 		str[len++] = input;
 	}
-	switch(state){
-	case DISARMED:
-		state_machine_disarmed();
-	  break;
-	case ARMED:
-		state_machine_armed();
-	  break;
-	case ARMED_COUNTDOWN:
-		state_machine_countdown();
-	  break;
-	case ALERT_SMS:
-		state_machine_alert();
-	  break;
-	case MENAGE_NUMBER:
-		state_machine_menage_number();
-	  break;
-	case REPLACE_NUMBER:
-		state_machine_replace_number();
-	  break;
-	case SET_ALERT_TIME:
-		state_machine_set_alert_time();
-	  break;
-	case SET_NEW_PIN:
-		state_machine_set_new_pin();
-	  break;
-	}
+	static void(*state_functions[8])(void) = {state_machine_armed, state_machine_countdown, state_machine_alert,
+			state_machine_disarmed, state_machine_set_new_pin, state_machine_menage_number,
+			state_machine_replace_number, state_machine_set_alert_time};
+	state_functions[state]();
 }
 
 void state_machine_armed(void){

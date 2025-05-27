@@ -571,6 +571,7 @@ int main(void)
   }
   lcd_init(hi2c1);
   char x;
+<<<<<<< HEAD
   init_nrf_master(); // CE will be set high at the end of this function
 
   // OPTION 1: POLLING METHOD (Recommended for initial debugging)
@@ -578,6 +579,12 @@ int main(void)
   uint8_t received_payload[33]; // Buffer for payload + null terminator
   uint8_t payload_width;
 
+=======
+//  init_nrf_master();
+//  HAL_GPIO_WritePin(SPI_SW_CE_GPIO_Port, SPI_SW_CE_Pin, GPIO_PIN_SET);
+//  while(HAL_GPIO_ReadPin(SPI_IRQ_GPIO_Port, SPI_IRQ_Pin));
+//  HAL_GPIO_WritePin(SPI_SW_CE_GPIO_Port, SPI_SW_CE_Pin, GPIO_PIN_RESET);
+>>>>>>> 0207771 (switch changed to function array)
 
 
   /* USER CODE END 2 */

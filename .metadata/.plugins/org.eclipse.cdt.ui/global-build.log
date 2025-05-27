@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 19:53:30 **** Incremental Build of configuration Debug for project Alarm_slave ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32U031xx -c -I../Core/Inc -I../Drivers/STM32U0xx_HAL_Driver/Inc -I../Drivers/STM32U0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32U0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
@@ -13,7 +14,11 @@ Finished building: default.size.stdout
 Finished building: Alarm_slave.list
  
 19:53:34 **** Incremental Build of configuration Debug for project Alarm_Master ****
+=======
+23:24:21 **** Incremental Build of configuration Debug for project Alarm_Master ****
+>>>>>>> 0207771 (switch changed to function array)
 make -j12 all 
+arm-none-eabi-gcc "../State_Machine/state_machine.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"State_Machine/state_machine.d" -MT"State_Machine/state_machine.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "State_Machine/state_machine.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
 ../Core/Src/main.c:583:8: warning: unused variable 'x' [-Wunused-variable]
@@ -25,11 +30,16 @@ Finished building target: Alarm_Master.elf
 arm-none-eabi-size  Alarm_Master.elf 
 arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
    text	   data	    bss	    dec	    hex	filename
+<<<<<<< HEAD
   21968	    104	   2296	  24368	   5f30	Alarm_Master.elf
+=======
+  20800	    152	   2400	  23352	   5b38	Alarm_Master.elf
+>>>>>>> 0207771 (switch changed to function array)
 Finished building: default.size.stdout
  
 Finished building: Alarm_Master.list
  
+<<<<<<< HEAD
 19:53:35 **** Incremental Build of configuration Debug for project Alarm_slave ****
 make -j12 all 
 arm-none-eabi-size  Alarm_slave.elf 
@@ -84,6 +94,13 @@ make -j12 all
 arm-none-eabi-size  Alarm_slave.elf 
    text	   data	    bss	    dec	    hex	filename
   26732	    104	   2152	  28988	   713c	Alarm_slave.elf
+=======
+23:25:04 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-size  Alarm_Master.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20800	    152	   2400	  23352	   5b38	Alarm_Master.elf
+>>>>>>> 0207771 (switch changed to function array)
 Finished building: default.size.stdout
  
 20:17:30 **** Incremental Build of configuration Debug for project Alarm_Master ****

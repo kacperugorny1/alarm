@@ -103,6 +103,7 @@ arm-none-eabi-size  Alarm_Master.elf
 >>>>>>> 0207771 (switch changed to function array)
 Finished building: default.size.stdout
  
+<<<<<<< HEAD
 20:17:30 **** Incremental Build of configuration Debug for project Alarm_Master ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
@@ -449,17 +450,426 @@ arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -D
 ../Core/Src/main.c:573:8: warning: unused variable 'x' [-Wunused-variable]
   573 |   char x;
       |        ^
+=======
+15:37:29 **** Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-gcc "../Flash_Interface/flash_interface.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Flash_Interface/flash_interface.d" -MT"Flash_Interface/flash_interface.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Flash_Interface/flash_interface.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "Alarm_Master.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\axeel\Desktop\alarm\Alarm_Master\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Alarm_Master.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Alarm_Master.elf
  
 arm-none-eabi-size  Alarm_Master.elf 
 arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
    text	   data	    bss	    dec	    hex	filename
-  21736	    104	   2304	  24144	   5e50	Alarm_Master.elf
+  20800	    152	   2400	  23352	   5b38	Alarm_Master.elf
 Finished building: default.size.stdout
  
 Finished building: Alarm_Master.list
  
+15:52:44 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-gcc "../State_Machine/state_machine.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"State_Machine/state_machine.d" -MT"State_Machine/state_machine.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "State_Machine/state_machine.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../State_Machine/state_machine.c: In function 'state_machine_alert':
+../State_Machine/state_machine.c:224:35: error: incompatible type for argument 1 of 'HAL_UART_Transmit'
+  224 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data));
+      |                                   ^~~~~~~~~~~~
+      |                                   |
+      |                                   UART_HandleTypeDef {aka struct __UART_HandleTypeDef}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../State_Machine/state_machine.h:11,
+                 from ../State_Machine/state_machine.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:57: note: expected 'UART_HandleTypeDef *' {aka 'struct __UART_HandleTypeDef *'} but argument is of type 'UART_HandleTypeDef' {aka 'struct __UART_HandleTypeDef'}
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                     ~~~~~~~~~~~~~~~~~~~~^~~~~
+../State_Machine/state_machine.c:224:49: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  224 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data));
+      |                                                 ^~~~
+      |                                                 |
+      |                                                 char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../State_Machine/state_machine.c:224:17: error: too few arguments to function 'HAL_UART_Transmit'
+  224 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data));
+      |                 ^~~~~~~~~~~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:19: note: declared here
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                   ^~~~~~~~~~~~~~~~~
+../State_Machine/state_machine.c:227:50: warning: format '%s' expects argument of type 'char *', but argument 4 has type 'int' [-Wformat=]
+  227 |                 snprintf(data,100,"AT+CMGS=\"+48%s\"",numbers[16*i]);
+      |                                                 ~^    ~~~~~~~~~~~~~
+      |                                                  |           |
+      |                                                  char *      int
+      |                                                 %d
+../State_Machine/state_machine.c:228:35: error: incompatible type for argument 1 of 'HAL_UART_Transmit'
+  228 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data));
+      |                                   ^~~~~~~~~~~~
+      |                                   |
+      |                                   UART_HandleTypeDef {aka struct __UART_HandleTypeDef}
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:57: note: expected 'UART_HandleTypeDef *' {aka 'struct __UART_HandleTypeDef *'} but argument is of type 'UART_HandleTypeDef' {aka 'struct __UART_HandleTypeDef'}
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                     ~~~~~~~~~~~~~~~~~~~~^~~~~
+../State_Machine/state_machine.c:228:49: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  228 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data));
+      |                                                 ^~~~
+      |                                                 |
+      |                                                 char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../State_Machine/state_machine.c:228:17: error: too few arguments to function 'HAL_UART_Transmit'
+  228 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data));
+      |                 ^~~~~~~~~~~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:19: note: declared here
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                   ^~~~~~~~~~~~~~~~~
+../State_Machine/state_machine.c:232:35: error: incompatible type for argument 1 of 'HAL_UART_Transmit'
+  232 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data));
+      |                                   ^~~~~~~~~~~~
+      |                                   |
+      |                                   UART_HandleTypeDef {aka struct __UART_HandleTypeDef}
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:57: note: expected 'UART_HandleTypeDef *' {aka 'struct __UART_HandleTypeDef *'} but argument is of type 'UART_HandleTypeDef' {aka 'struct __UART_HandleTypeDef'}
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                     ~~~~~~~~~~~~~~~~~~~~^~~~~
+../State_Machine/state_machine.c:232:49: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  232 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data));
+      |                                                 ^~~~
+      |                                                 |
+      |                                                 char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../State_Machine/state_machine.c:232:17: error: too few arguments to function 'HAL_UART_Transmit'
+  232 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data));
+      |                 ^~~~~~~~~~~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:19: note: declared here
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                   ^~~~~~~~~~~~~~~~~
+../State_Machine/state_machine.c:236:35: error: incompatible type for argument 1 of 'HAL_UART_Transmit'
+  236 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data));
+      |                                   ^~~~~~~~~~~~
+      |                                   |
+      |                                   UART_HandleTypeDef {aka struct __UART_HandleTypeDef}
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:57: note: expected 'UART_HandleTypeDef *' {aka 'struct __UART_HandleTypeDef *'} but argument is of type 'UART_HandleTypeDef' {aka 'struct __UART_HandleTypeDef'}
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                     ~~~~~~~~~~~~~~~~~~~~^~~~~
+../State_Machine/state_machine.c:236:49: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  236 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data));
+      |                                                 ^~~~
+      |                                                 |
+      |                                                 char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../State_Machine/state_machine.c:236:17: error: too few arguments to function 'HAL_UART_Transmit'
+  236 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data));
+      |                 ^~~~~~~~~~~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:19: note: declared here
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                   ^~~~~~~~~~~~~~~~~
+make: *** [State_Machine/subdir.mk:19: State_Machine/state_machine.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+15:53:39 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-gcc "../State_Machine/state_machine.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"State_Machine/state_machine.d" -MT"State_Machine/state_machine.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "State_Machine/state_machine.o"
+../State_Machine/state_machine.c: In function 'state_machine_alert':
+../State_Machine/state_machine.c:224:35: error: incompatible type for argument 1 of 'HAL_UART_Transmit'
+  224 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data), 100);
+      |                                   ^~~~~~~~~~~~
+      |                                   |
+      |                                   UART_HandleTypeDef {aka struct __UART_HandleTypeDef}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../State_Machine/state_machine.h:11,
+                 from ../State_Machine/state_machine.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:57: note: expected 'UART_HandleTypeDef *' {aka 'struct __UART_HandleTypeDef *'} but argument is of type 'UART_HandleTypeDef' {aka 'struct __UART_HandleTypeDef'}
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                     ~~~~~~~~~~~~~~~~~~~~^~~~~
+../State_Machine/state_machine.c:224:49: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  224 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data), 100);
+      |                                                 ^~~~
+      |                                                 |
+      |                                                 char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../State_Machine/state_machine.c:228:35: error: incompatible type for argument 1 of 'HAL_UART_Transmit'
+  228 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data), 100);
+      |                                   ^~~~~~~~~~~~
+      |                                   |
+      |                                   UART_HandleTypeDef {aka struct __UART_HandleTypeDef}
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:57: note: expected 'UART_HandleTypeDef *' {aka 'struct __UART_HandleTypeDef *'} but argument is of type 'UART_HandleTypeDef' {aka 'struct __UART_HandleTypeDef'}
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                     ~~~~~~~~~~~~~~~~~~~~^~~~~
+../State_Machine/state_machine.c:228:49: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  228 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data), 100);
+      |                                                 ^~~~
+      |                                                 |
+      |                                                 char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../State_Machine/state_machine.c:232:35: error: incompatible type for argument 1 of 'HAL_UART_Transmit'
+  232 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data), 100);
+      |                                   ^~~~~~~~~~~~
+      |                                   |
+      |                                   UART_HandleTypeDef {aka struct __UART_HandleTypeDef}
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:57: note: expected 'UART_HandleTypeDef *' {aka 'struct __UART_HandleTypeDef *'} but argument is of type 'UART_HandleTypeDef' {aka 'struct __UART_HandleTypeDef'}
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                     ~~~~~~~~~~~~~~~~~~~~^~~~~
+../State_Machine/state_machine.c:232:49: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  232 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data), 100);
+      |                                                 ^~~~
+      |                                                 |
+      |                                                 char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../State_Machine/state_machine.c:236:35: error: incompatible type for argument 1 of 'HAL_UART_Transmit'
+  236 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data), 100);
+      |                                   ^~~~~~~~~~~~
+      |                                   |
+      |                                   UART_HandleTypeDef {aka struct __UART_HandleTypeDef}
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:57: note: expected 'UART_HandleTypeDef *' {aka 'struct __UART_HandleTypeDef *'} but argument is of type 'UART_HandleTypeDef' {aka 'struct __UART_HandleTypeDef'}
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                     ~~~~~~~~~~~~~~~~~~~~^~~~~
+../State_Machine/state_machine.c:236:49: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  236 |                 HAL_UART_Transmit(SIM800L_uart, data, strlen(data), 100);
+      |                                                 ^~~~
+      |                                                 |
+      |                                                 char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+make: *** [State_Machine/subdir.mk:19: State_Machine/state_machine.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+15:54:19 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-gcc "../State_Machine/state_machine.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"State_Machine/state_machine.d" -MT"State_Machine/state_machine.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "State_Machine/state_machine.o"
+../State_Machine/state_machine.c: In function 'state_machine_alert':
+../State_Machine/state_machine.c:224:50: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  224 |                 HAL_UART_Transmit(&SIM800L_uart, data, strlen(data), 100);
+      |                                                  ^~~~
+      |                                                  |
+      |                                                  char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../State_Machine/state_machine.h:11,
+                 from ../State_Machine/state_machine.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../State_Machine/state_machine.c:228:50: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  228 |                 HAL_UART_Transmit(&SIM800L_uart, data, strlen(data), 100);
+      |                                                  ^~~~
+      |                                                  |
+      |                                                  char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../State_Machine/state_machine.c:232:50: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  232 |                 HAL_UART_Transmit(&SIM800L_uart, data, strlen(data), 100);
+      |                                                  ^~~~
+      |                                                  |
+      |                                                  char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../State_Machine/state_machine.c:236:50: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  236 |                 HAL_UART_Transmit(&SIM800L_uart, data, strlen(data), 100);
+      |                                                  ^~~~
+      |                                                  |
+      |                                                  char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "Alarm_Master.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\axeel\Desktop\alarm\Alarm_Master\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Alarm_Master.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Alarm_Master.elf
+ 
+arm-none-eabi-size  Alarm_Master.elf 
+arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
+   text	   data	    bss	    dec	    hex	filename
+  21804	    152	   2472	  24428	   5f6c	Alarm_Master.elf
+Finished building: default.size.stdout
+ 
+Finished building: Alarm_Master.list
+ 
+15:58:29 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-gcc "../State_Machine/state_machine.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"State_Machine/state_machine.d" -MT"State_Machine/state_machine.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "State_Machine/state_machine.o"
+arm-none-eabi-gcc -o "Alarm_Master.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\axeel\Desktop\alarm\Alarm_Master\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Alarm_Master.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Alarm_Master.elf
+ 
+arm-none-eabi-size  Alarm_Master.elf 
+arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
+   text	   data	    bss	    dec	    hex	filename
+  21804	    152	   2472	  24428	   5f6c	Alarm_Master.elf
+Finished building: default.size.stdout
+ 
+Finished building: Alarm_Master.list
+ 
+16:06:27 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-gcc "../State_Machine/state_machine.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"State_Machine/state_machine.d" -MT"State_Machine/state_machine.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "State_Machine/state_machine.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Alarm_Master.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\axeel\Desktop\alarm\Alarm_Master\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Alarm_Master.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Alarm_Master.elf
+ 
+arm-none-eabi-size  Alarm_Master.elf 
+arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
+   text	   data	    bss	    dec	    hex	filename
+  21764	    152	   2400	  24316	   5efc	Alarm_Master.elf
+Finished building: default.size.stdout
+ 
+Finished building: Alarm_Master.list
+ 
+16:09:35 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-size  Alarm_Master.elf 
+   text	   data	    bss	    dec	    hex	filename
+  21764	    152	   2400	  24316	   5efc	Alarm_Master.elf
+Finished building: default.size.stdout
+ 
+16:25:02 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-gcc "../State_Machine/state_machine.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"State_Machine/state_machine.d" -MT"State_Machine/state_machine.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "State_Machine/state_machine.o"
+arm-none-eabi-gcc -o "Alarm_Master.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\axeel\Desktop\alarm\Alarm_Master\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Alarm_Master.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Alarm_Master.elf
+ 
+arm-none-eabi-size  Alarm_Master.elf 
+arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
+   text	   data	    bss	    dec	    hex	filename
+  21828	    152	   2400	  24380	   5f3c	Alarm_Master.elf
+Finished building: default.size.stdout
+ 
+Finished building: Alarm_Master.list
+ 
+16:32:10 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-gcc "../State_Machine/state_machine.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"State_Machine/state_machine.d" -MT"State_Machine/state_machine.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "State_Machine/state_machine.o"
+arm-none-eabi-gcc -o "Alarm_Master.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\axeel\Desktop\alarm\Alarm_Master\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Alarm_Master.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Alarm_Master.elf
+ 
+arm-none-eabi-size  Alarm_Master.elf 
+arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
+   text	   data	    bss	    dec	    hex	filename
+  21852	    152	   2400	  24404	   5f54	Alarm_Master.elf
+Finished building: default.size.stdout
+ 
+Finished building: Alarm_Master.list
+ 
+16:35:13 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-gcc "../State_Machine/state_machine.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"State_Machine/state_machine.d" -MT"State_Machine/state_machine.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "State_Machine/state_machine.o"
+arm-none-eabi-gcc -o "Alarm_Master.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\axeel\Desktop\alarm\Alarm_Master\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Alarm_Master.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Alarm_Master.elf
+ 
+arm-none-eabi-size  Alarm_Master.elf 
+arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
+   text	   data	    bss	    dec	    hex	filename
+  21848	    152	   2400	  24400	   5f50	Alarm_Master.elf
+Finished building: default.size.stdout
+ 
+Finished building: Alarm_Master.list
+ 
+16:36:52 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-gcc "../State_Machine/state_machine.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"State_Machine/state_machine.d" -MT"State_Machine/state_machine.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "State_Machine/state_machine.o"
+arm-none-eabi-gcc -o "Alarm_Master.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\axeel\Desktop\alarm\Alarm_Master\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Alarm_Master.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Alarm_Master.elf
+ 
+arm-none-eabi-size  Alarm_Master.elf 
+arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
+   text	   data	    bss	    dec	    hex	filename
+  21908	    152	   2400	  24460	   5f8c	Alarm_Master.elf
+Finished building: default.size.stdout
+ 
+Finished building: Alarm_Master.list
+ 
+16:39:11 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-gcc "../State_Machine/state_machine.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"State_Machine/state_machine.d" -MT"State_Machine/state_machine.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "State_Machine/state_machine.o"
+arm-none-eabi-gcc -o "Alarm_Master.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\axeel\Desktop\alarm\Alarm_Master\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Alarm_Master.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Alarm_Master.elf
+ 
+arm-none-eabi-size  Alarm_Master.elf 
+arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
+   text	   data	    bss	    dec	    hex	filename
+  21912	    152	   2400	  24464	   5f90	Alarm_Master.elf
+Finished building: default.size.stdout
+ 
+Finished building: Alarm_Master.list
+ 
+16:42:53 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-gcc "../State_Machine/state_machine.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"State_Machine/state_machine.d" -MT"State_Machine/state_machine.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "State_Machine/state_machine.o"
+arm-none-eabi-gcc -o "Alarm_Master.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\axeel\Desktop\alarm\Alarm_Master\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Alarm_Master.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Alarm_Master.elf
+ 
+arm-none-eabi-size  Alarm_Master.elf 
+arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
+   text	   data	    bss	    dec	    hex	filename
+  21892	    152	   2400	  24444	   5f7c	Alarm_Master.elf
+Finished building: default.size.stdout
+ 
+Finished building: Alarm_Master.list
+ 
+16:45:59 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-gcc "../State_Machine/state_machine.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"State_Machine/state_machine.d" -MT"State_Machine/state_machine.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "State_Machine/state_machine.o"
+arm-none-eabi-gcc -o "Alarm_Master.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\axeel\Desktop\alarm\Alarm_Master\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Alarm_Master.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Alarm_Master.elf
+ 
+arm-none-eabi-size  Alarm_Master.elf 
+arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
+   text	   data	    bss	    dec	    hex	filename
+  21892	    152	   2400	  24444	   5f7c	Alarm_Master.elf
+Finished building: default.size.stdout
+ 
+Finished building: Alarm_Master.list
+ 
+16:47:25 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-gcc "../State_Machine/state_machine.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"State_Machine/state_machine.d" -MT"State_Machine/state_machine.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "State_Machine/state_machine.o"
+../State_Machine/state_machine.c: In function 'state_machine_alert':
+../State_Machine/state_machine.c:224:17: error: too few arguments to function 'strcpy'
+  224 |                 strcpy("AT+COPS?\r\n")
+      |                 ^~~~~~
+In file included from ../State_Machine/state_machine.c:10:
+C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.100.202403111256\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/string.h:38:10: note: declared here
+   38 | char    *strcpy (char *__restrict, const char *__restrict);
+      |          ^~~~~~
+../State_Machine/state_machine.c:224:39: error: expected ';' before 'HAL_UART_Transmit'
+  224 |                 strcpy("AT+COPS?\r\n")
+      |                                       ^
+      |                                       ;
+  225 |                 HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+      |                 ~~~~~~~~~~~~~~~~~      
+make: *** [State_Machine/subdir.mk:19: State_Machine/state_machine.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+16:47:41 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-gcc "../State_Machine/state_machine.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"State_Machine/state_machine.d" -MT"State_Machine/state_machine.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "State_Machine/state_machine.o"
+>>>>>>> c1d5507 (packet_list and sim800L alert)
+arm-none-eabi-gcc -o "Alarm_Master.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\axeel\Desktop\alarm\Alarm_Master\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Alarm_Master.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Alarm_Master.elf
+ 
+arm-none-eabi-size  Alarm_Master.elf 
+arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
+   text	   data	    bss	    dec	    hex	filename
+<<<<<<< HEAD
+  21736	    104	   2304	  24144	   5e50	Alarm_Master.elf
+=======
+  21908	    152	   2400	  24460	   5f8c	Alarm_Master.elf
+>>>>>>> c1d5507 (packet_list and sim800L alert)
+Finished building: default.size.stdout
+ 
+Finished building: Alarm_Master.list
+ 
+<<<<<<< HEAD
 21:10:22 **** Incremental Build of configuration Debug for project Alarm_slave ****
 make -j12 all 
 arm-none-eabi-size  Alarm_slave.elf 
@@ -516,17 +926,34 @@ arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -D
 ../Core/Src/main.c:573:8: warning: unused variable 'x' [-Wunused-variable]
   573 |   char x;
       |        ^
+=======
+16:49:37 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-size  Alarm_Master.elf 
+   text	   data	    bss	    dec	    hex	filename
+  21908	    152	   2400	  24460	   5f8c	Alarm_Master.elf
+Finished building: default.size.stdout
+ 
+16:58:58 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-gcc "../State_Machine/state_machine.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"State_Machine/state_machine.d" -MT"State_Machine/state_machine.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "State_Machine/state_machine.o"
+>>>>>>> c1d5507 (packet_list and sim800L alert)
 arm-none-eabi-gcc -o "Alarm_Master.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\axeel\Desktop\alarm\Alarm_Master\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Alarm_Master.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Alarm_Master.elf
  
 arm-none-eabi-size  Alarm_Master.elf 
 arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
    text	   data	    bss	    dec	    hex	filename
+<<<<<<< HEAD
   21736	    104	   2304	  24144	   5e50	Alarm_Master.elf
+=======
+  21908	    152	   2400	  24460	   5f8c	Alarm_Master.elf
+>>>>>>> c1d5507 (packet_list and sim800L alert)
 Finished building: default.size.stdout
  
 Finished building: Alarm_Master.list
  
+<<<<<<< HEAD
 21:22:35 **** Incremental Build of configuration Debug for project Alarm_Master ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
@@ -559,3 +986,5 @@ Finished building: default.size.stdout
  
 Finished building: Alarm_slave.list
  
+=======
+>>>>>>> c1d5507 (packet_list and sim800L alert)

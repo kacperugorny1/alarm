@@ -1,5 +1,6 @@
 ../Drivers/CMSIS/Include/core_cm4.h:2064:26:ITM_SendChar	4
 <<<<<<< HEAD
+<<<<<<< HEAD
 ../Core/Src/main.c:134:19:nrf_write_register	2
 ../Core/Src/main.c:163:19:nrf_read_register_multi	3
 ../Core/Src/main.c:192:9:nrf_read_single_register	2
@@ -32,3 +33,13 @@
 ../Core/Src/main.c:398:5:_write	2
 ../Core/Src/main.c:415:6:Error_Handler	1
 >>>>>>> 0207771 (switch changed to function array)
+=======
+../Core/Src/main.c:82:5:main	6
+../Core/Src/main.c:156:6:SystemClock_Config	3
+../Core/Src/main.c:202:13:MX_I2C1_Init	2
+../Core/Src/main.c:236:13:MX_SPI2_Init	2
+../Core/Src/main.c:274:13:MX_USART1_UART_Init	2
+../Core/Src/main.c:307:13:MX_GPIO_Init	1
+../Core/Src/main.c:357:5:_write	2
+../Core/Src/main.c:374:6:Error_Handler	1
+>>>>>>> c1d5507 (packet_list and sim800L alert)

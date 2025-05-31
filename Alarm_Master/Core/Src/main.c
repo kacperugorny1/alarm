@@ -70,6 +70,7 @@ static void MX_USART1_UART_Init(void);
 
 
 alarm_state state = DISARMED;
+<<<<<<< HEAD
 #define NRF_REG_CONFIG      0x00
 #define NRF_REG_EN_AA       0x01
 #define NRF_REG_EN_RXADDR   0x02
@@ -183,6 +184,9 @@ HAL_StatusTypeDef nrf_read_register_multi(uint8_t reg_addr, uint8_t* read_data, 
     }
     return status;
 }
+=======
+
+>>>>>>> c1d5507 (packet_list and sim800L alert)
 
 /*
  * @brief Reads a single byte from an NRF24L01+ register.
@@ -567,10 +571,11 @@ int main(void)
 	char data_out[64];
 	flash_read_multiple_words(0x08060000, (uint32_t *)data_out, 16);
 	//PARSING TO VARIABLES
-	state_machine_init(data_out);
+	state_machine_init(data_out, &huart1);
   }
   lcd_init(hi2c1);
   char x;
+<<<<<<< HEAD
 <<<<<<< HEAD
   init_nrf_master(); // CE will be set high at the end of this function
 
@@ -586,6 +591,9 @@ int main(void)
 //  HAL_GPIO_WritePin(SPI_SW_CE_GPIO_Port, SPI_SW_CE_Pin, GPIO_PIN_RESET);
 >>>>>>> 0207771 (switch changed to function array)
 
+=======
+  printf("Hello\n");
+>>>>>>> c1d5507 (packet_list and sim800L alert)
 
   /* USER CODE END 2 */
 
@@ -829,7 +837,7 @@ static void MX_USART1_UART_Init(void)
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_NONE;
-  huart1.Init.Mode = UART_MODE_TX_RX;
+  huart1.Init.Mode = UART_MODE_TX;
   huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
   huart1.Init.OverSampling = UART_OVERSAMPLING_16;
   if (HAL_UART_Init(&huart1) != HAL_OK)

@@ -16,6 +16,8 @@ static char str[14];
 static uint8_t len;
 static uint8_t id;
 
+static UART_HandleTypeDef * SIM800L_uart;
+
 
 static uint32_t timestamp;
 static uint32_t timestamp_display_s;
@@ -52,7 +54,7 @@ static inline void change_state(alarm_state new_state){
 uint32_t s_to_ms(uint32_t s){return s*1000UL;}
 
 //IMPLEMENTATIONS
-void state_machine_init(char data_blob[64]){
+void state_machine_init(char data_blob[64], UART_HandleTypeDef* uart){
 	char temp[8];
 	for(size_t i = 0; i < 64; ++i)
 		if(data_blob[i] == '*') data_blob[i] = '\0';
@@ -64,6 +66,7 @@ void state_machine_init(char data_blob[64]){
 	countdown_delay = strtol(temp, NULL, 10);
 	pin[strlen(pin)] = '#';
 	countdown_delay = s_to_ms(countdown_delay);
+	SIM800L_uart = uart;
 
 }
 
@@ -215,7 +218,31 @@ void state_machine_countdown(void){
 
 void state_machine_alert(void){
 
-	//TODO GSM SEND
+	char data[100] = "AT+COPS?\r\n";
+	for(int i = 0; i < 3; ++i){
+		if(numbers[i*16] == 0) continue;
+		strcpy(data,"AT+COPS?\r\n");
+		HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+		HAL_Delay(50);
+
+		strcpy(data, "AT+OK\r\n");
+		HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+		HAL_Delay(50);
+		strcpy(data, "AT+CMGF=1\r\n");
+		HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+		HAL_Delay(50);
+		snprintf(data,100,"AT+CMGS=\"+48%s\"\r\n",numbers + 16*i);
+		HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+		HAL_Delay(50);
+
+		strcpy(data, "ALARM!!!\r");
+		HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+		HAL_Delay(50);
+
+		data[0] = 0x1A; data[1] = 0;
+		HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+		HAL_Delay(5000);
+	}
 	change_state(ARMED);
 }
 

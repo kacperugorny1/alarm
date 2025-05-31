@@ -38,7 +38,7 @@ extern alarm_state state;
 
 
 void state_machine_run(char input);
-void state_machine_init(char data_blob[64]);
+void state_machine_init(char data_blob[64], UART_HandleTypeDef* uart);
 void state_machine_disarmed(void);
 void state_machine_armed(void);
 void state_machine_countdown(void);

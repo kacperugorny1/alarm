@@ -1,3 +1,3 @@
 ../Flash_Interface/flash_interface.c:12:6:flash_write_erase_sector7	4	static,ignoring_inline_asm
 ../Flash_Interface/flash_interface.c:37:6:flash_write_multiple_word	32	static,ignoring_inline_asm
-../Flash_Interface/flash_interface.c:71:6:flash_read_multiple_words	32	static
+../Flash_Interface/flash_interface.c:70:6:flash_read_multiple_words	32	static

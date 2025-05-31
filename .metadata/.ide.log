@@ -1,6 +1,7 @@
-2025-05-27 17:13:07,525 [INFO] Activator:176 - 
+2025-05-31 14:56:33,443 [INFO] Activator:176 - 
 
 
+<<<<<<< HEAD
 2025-05-27 17:13:07,530 [INFO] Activator:177 - !SESSION log4j initialized
 2025-05-27 17:13:09,340 [INFO] ApplicationProperties:184 - Using Application install path: C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.11.0.202403141607
 2025-05-27 17:13:09,356 [INFO] DbMcusXml:78 - Set database path to: C:\ST\STM32CubeIDE_1.14.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.11.0.202403141607\\db\/mcu/
@@ -5067,3 +5068,7 @@ java.lang.NullPointerException: Cannot invoke "javax.swing.JTextField.getText()"
 2025-05-27 23:06:56,811 [INFO] Activator:177 - !SESSION log4j initialized
 2025-05-27 23:07:00,734 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
 >>>>>>> 0207771 (switch changed to function array)
+=======
+2025-05-31 14:56:33,447 [INFO] Activator:177 - !SESSION log4j initialized
+2025-05-31 14:56:39,174 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+>>>>>>> c1d5507 (packet_list and sim800L alert)

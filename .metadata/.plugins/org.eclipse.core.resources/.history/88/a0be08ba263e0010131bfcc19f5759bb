@@ -16,6 +16,8 @@ static char str[14];
 static uint8_t len;
 static uint8_t id;
 
+static UART_HandleTypeDef SIM800L_uart;
+
 
 static uint32_t timestamp;
 static uint32_t timestamp_display_s;
@@ -52,7 +54,7 @@ static inline void change_state(alarm_state new_state){
 uint32_t s_to_ms(uint32_t s){return s*1000UL;}
 
 //IMPLEMENTATIONS
-void state_machine_init(char data_blob[64]){
+void state_machine_init(char data_blob[64], UART_HandleTypeDef uart){
 	char temp[8];
 	for(size_t i = 0; i < 64; ++i)
 		if(data_blob[i] == '*') data_blob[i] = '\0';
@@ -64,6 +66,7 @@ void state_machine_init(char data_blob[64]){
 	countdown_delay = strtol(temp, NULL, 10);
 	pin[strlen(pin)] = '#';
 	countdown_delay = s_to_ms(countdown_delay);
+	SIM800L_uart = uart;
 
 }
 
@@ -72,32 +75,10 @@ void state_machine_run(char input){
 		changed = true;
 		str[len++] = input;
 	}
-	switch(state){
-	case DISARMED:
-		state_machine_disarmed();
-	  break;
-	case ARMED:
-		state_machine_armed();
-	  break;
-	case ARMED_COUNTDOWN:
-		state_machine_countdown();
-	  break;
-	case ALERT_SMS:
-		state_machine_alert();
-	  break;
-	case MENAGE_NUMBER:
-		state_machine_menage_number();
-	  break;
-	case REPLACE_NUMBER:
-		state_machine_replace_number();
-	  break;
-	case SET_ALERT_TIME:
-		state_machine_set_alert_time();
-	  break;
-	case SET_NEW_PIN:
-		state_machine_set_new_pin();
-	  break;
-	}
+	static void(*state_functions[8])(void) = {state_machine_armed, state_machine_countdown, state_machine_alert,
+			state_machine_disarmed, state_machine_set_new_pin, state_machine_menage_number,
+			state_machine_replace_number, state_machine_set_alert_time};
+	state_functions[state]();
 }
 
 void state_machine_armed(void){
@@ -237,7 +218,26 @@ void state_machine_countdown(void){
 
 void state_machine_alert(void){
 
-	//TODO GSM SEND
+	for(int i = 0; i < 3; ++i){
+		if(numbers[i*16] == 0) continue;
+		char data[100] = "AT+CMGF=1\r\n";
+		HAL_UART_Transmit(SIM800L_uart, data, strlen(data), 100);
+		HAL_Delay(50);
+
+		snprintf(data,100,"AT+CMGS=\"+48%s\"",numbers + 16*i);
+		HAL_UART_Transmit(SIM800L_uart, data, strlen(data), 100);
+
+
+		HAL_Delay(50);
+
+		strcpy(data, "ALARM!!!");
+		HAL_UART_Transmit(SIM800L_uart, data, strlen(data), 100);
+		HAL_Delay(50);
+
+		data[0] = 0x1A; data[1] = 0;
+		HAL_UART_Transmit(SIM800L_uart, data, strlen(data), 100);
+		HAL_Delay(200);
+	}
 	change_state(ARMED);
 }
 

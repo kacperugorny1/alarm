@@ -1,4 +1,5 @@
 ../Drivers/CMSIS/Include/core_cm4.h:2064:26:ITM_SendChar	16	static,ignoring_inline_asm
+<<<<<<< HEAD
 ../Core/Src/main.c:134:19:nrf_write_register	88	dynamic
 ../Core/Src/main.c:163:19:nrf_read_register_multi	32	static
 ../Core/Src/main.c:192:9:nrf_read_single_register	24	static
@@ -19,3 +20,13 @@
 ../Core/Src/main.c:843:13:MX_GPIO_Init	40	static
 ../Core/Src/main.c:893:5:_write	32	static
 ../Core/Src/main.c:910:6:Error_Handler	4	static,ignoring_inline_asm
+=======
+../Core/Src/main.c:82:5:main	160	static
+../Core/Src/main.c:156:6:SystemClock_Config	88	static
+../Core/Src/main.c:202:13:MX_I2C1_Init	8	static
+../Core/Src/main.c:236:13:MX_SPI2_Init	8	static
+../Core/Src/main.c:274:13:MX_USART1_UART_Init	8	static
+../Core/Src/main.c:307:13:MX_GPIO_Init	40	static
+../Core/Src/main.c:357:5:_write	32	static
+../Core/Src/main.c:374:6:Error_Handler	4	static,ignoring_inline_asm
+>>>>>>> c1d5507 (packet_list and sim800L alert)

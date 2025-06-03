@@ -28,4 +28,5 @@
 "./Flash_Interface/flash_interface.o"
 "./Keyboard_Driver/keyboard.o"
 "./LCD_Driver/lcd_driver.o"
+"./SIM800L_Driver/sim800l_driver.o"
 "./State_Machine/state_machine.o"

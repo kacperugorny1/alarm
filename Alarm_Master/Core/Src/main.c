@@ -26,8 +26,10 @@
 #include <string.h>
 
 #include "keyboard.h"
+#include "lcd_driver.h"
 #include "state_machine.h"
 #include "flash_interface.h"
+#include "sim800l_driver.h"
 
 /* USER CODE END Includes */
 
@@ -67,7 +69,6 @@ static void MX_USART1_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
 
 alarm_state state = DISARMED;
 
@@ -119,9 +120,10 @@ int main(void)
 	char data_out[64];
 	flash_read_multiple_words(0x08060000, (uint32_t *)data_out, 16);
 	//PARSING TO VARIABLES
-	state_machine_init(data_out, &huart1);
+	state_machine_init(data_out);
   }
   lcd_init(hi2c1);
+  gsm_init(&huart1);
   char x;
 
   /* USER CODE END 2 */
@@ -283,7 +285,7 @@ static void MX_USART1_UART_Init(void)
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_NONE;
-  huart1.Init.Mode = UART_MODE_TX;
+  huart1.Init.Mode = UART_MODE_TX_RX;
   huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
   huart1.Init.OverSampling = UART_OVERSAMPLING_16;
   if (HAL_UART_Init(&huart1) != HAL_OK)

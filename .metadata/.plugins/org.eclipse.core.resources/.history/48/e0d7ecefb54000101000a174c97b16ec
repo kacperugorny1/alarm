@@ -1,0 +1,17 @@
+/*
+ * sim800l_driver.h
+ *
+ *  Created on: Jun 3, 2025
+ *      Author: axeel
+ */
+
+#ifndef SIM800L_DRIVER_H_
+#define SIM800L_DRIVER_H_
+
+#include "stm32f4xx_hal.h"
+
+void gsm_init(UART_HandleTypeDef* uart);
+void gsm_sms_queue(char * number, char *string);
+void gsm_sms_send(char * number);
+
+#endif /* SIM800L_DRIVER_H_ */

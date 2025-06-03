@@ -1,0 +1,83 @@
+/*
+ * sim800l_driver.c
+ *
+ *  Created on: Jun 3, 2025
+ *      Author: axeel
+ */
+
+
+static UART_HandleTypeDef * SIM800L_uart;
+
+
+void gsm_init(UART_HandleTypeDef* uart){
+	SIM800L_uart = uart;
+}
+
+void gsm_sms_queue(){
+	char data[100] = "AT+COPS?\r\n";
+	for(int i = 0; i < 3; ++i){
+		if(numbers[i*16] == 0) continue;
+		if(i != 0) HAL_Delay(5000);
+		strcpy(data,"AT+COPS?\r\n");
+		HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+		HAL_Delay(50);
+
+		strcpy(data, "AT+CMGF=1\r\n");
+		HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+		HAL_Delay(50);
+		snprintf(data,100,"AT+CMGS=\"+48%s\"\r\n",numbers + 16*i);
+		HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+		HAL_Delay(50);
+
+		strcpy(data, "ALARM!!!\r");
+		HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+		HAL_Delay(50);
+
+		data[0] = 0x1A; data[1] = 0;
+		HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+	}
+}
+
+void gsm_sms_send(){
+	char data[100] = "AT+COPS?\r\n";
+	for(int i = 0; i < 3; ++i){
+		if(numbers[i*16] == 0) continue;
+		if(i != 0) HAL_Delay(5000);
+		strcpy(data,"AT+COPS?\r\n");
+		HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+		HAL_Delay(50);
+
+		strcpy(data, "AT+CMGF=1\r\n");
+		HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+		HAL_Delay(50);
+		snprintf(data,100,"AT+CMGS=\"+48%s\"\r\n",numbers + 16*i);
+		HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+		HAL_Delay(50);
+
+		strcpy(data, "ALARM!!!\r");
+		HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+		HAL_Delay(50);
+
+		data[0] = 0x1A; data[1] = 0;
+		HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+	}
+}
+
+
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
+{
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(huart);
+  /* NOTE: This function should not be modified, when the callback is needed,
+           the HAL_UART_TxCpltCallback could be implemented in the user file
+   */
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(huart);
+  /* NOTE: This function should not be modified, when the callback is needed,
+           the HAL_UART_RxCpltCallback could be implemented in the user file
+   */
+}

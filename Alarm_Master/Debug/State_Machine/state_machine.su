@@ -7,7 +7,7 @@
 ../State_Machine/state_machine.c:128:6:state_machine_disarmed	8	static
 ../State_Machine/state_machine.c:175:6:state_machine_countdown	32	static
 ../State_Machine/state_machine.c:219:6:state_machine_alert	16	static
-../State_Machine/state_machine.c:228:6:state_machine_set_alert_time	8	static
-../State_Machine/state_machine.c:252:6:state_machine_set_new_pin	8	static
-../State_Machine/state_machine.c:277:6:state_machine_menage_number	32	static
-../State_Machine/state_machine.c:317:6:state_machine_replace_number	8	static
+../State_Machine/state_machine.c:227:6:state_machine_set_alert_time	8	static
+../State_Machine/state_machine.c:251:6:state_machine_set_new_pin	8	static
+../State_Machine/state_machine.c:276:6:state_machine_menage_number	32	static
+../State_Machine/state_machine.c:316:6:state_machine_replace_number	8	static

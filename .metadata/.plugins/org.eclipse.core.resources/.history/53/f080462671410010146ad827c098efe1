@@ -1,0 +1,204 @@
+/*
+ * sim800l_driver.c
+ *
+ * Created on: Jun 3, 2025
+ * Author: axeel
+ */
+
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+#include "sim800l_driver.h" // Assuming this declares HAL_UART_HandleTypeDef if not included by main.h
+
+static UART_HandleTypeDef * SIM800L_uart;
+static char send_buf[50]; // Buffer for AT commands to be sent
+static uint8_t new;       // Stores the latest byte received via UART
+static bool msg_sending;  // Flag: true if an SMS sending sequence is in progress
+
+// SMS Queue
+static uint8_t * queue[6]; // Array to store phone numbers for SMS
+static uint8_t queue_len = 0; // Current number of items in the queue
+static uint8_t queue_id = 0;  // Index of the current message being processed from the queue
+
+// State variable for AT command sequence
+// 0: Initial, AT+COPS? to be sent / has been sent
+// 1: AT+CMGF=1 to be sent / has been sent
+// 2: AT+CMGS="<num>" to be sent / has been sent, waiting for ">"
+// 3: ">" received, "ALARM!!!" message body to be sent / has been sent
+// 4: CTRL+Z (0x1A) to be sent / has been sent
+// 5: Waiting for final "OK" after +CMGS response
+static uint8_t msg_num = 0;
+
+
+void gsm_init(UART_HandleTypeDef* uart){
+	SIM800L_uart = uart;
+	// Start listening for incoming data
+	HAL_UART_Receive_IT(SIM800L_uart, &new, 1);
+}
+
+void gsm_sms_queue(char * number){
+	if (number == NULL || *number == '\0') return; // Ignore empty numbers
+
+	if(queue_len < 6) { // Check if queue has space
+		// Add number to the queue (circularly)
+		queue[(queue_id + queue_len) % 6] = (uint8_t*)number;
+		queue_len++;
+	} else {
+		// Queue is full, handle error or ignore
+		// For now, we'll just not add it.
+		return;
+	}
+
+	if(!msg_sending)  { // If not already sending a message, start the process
+		msg_sending = true;
+		msg_num = 0; // Start with the first step of AT command sequence
+		strcpy(send_buf, "AT+COPS?\r\n"); // First command
+		HAL_UART_Transmit_IT(SIM800L_uart, (uint8_t*)send_buf, strlen(send_buf));
+	}
+}
+
+// Blocking SMS send function (provided by user, for reference of AT sequence)
+void gsm_sms_send(char * number){
+	char data[100] = "AT+COPS?\r\n";
+	if(*number == 0) return;
+	strcpy(data,"AT+COPS?\r\n");
+
+	HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+	HAL_Delay(50);
+
+	strcpy(data, "AT+CMGF=1\r\n");
+	HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+	HAL_Delay(50);
+	snprintf(data,100,"AT+CMGS=\"+48%s\"\r\n",number);
+	HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+	HAL_Delay(50);
+
+	strcpy(data, "ALARM!!!\r"); // Message content, \r is often used before CTRL+Z
+	HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, strlen(data), 100);
+	HAL_Delay(50);
+
+	data[0] = 0x1A; // CTRL+Z
+    data[1] = '\0'; // Null terminate for strlen, though only 1 byte is typically needed
+	HAL_UART_Transmit(SIM800L_uart, (uint8_t*)data, 1, 100); // Send only CTRL+Z
+}
+
+
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
+{
+	if (huart->Instance != SIM800L_uart->Instance) {
+		return; // Not our UART
+	}
+
+	if (msg_sending) {
+		// msg_num reflects the command that JUST FINISHED sending.
+		// We now transition to the next state and send the next command.
+
+		if (msg_num == 0) { // AT+COPS? has been sent
+			msg_num = 1;      // Next state: send AT+CMGF=1
+			strcpy(send_buf, "AT+CMGF=1\r\n");
+			HAL_UART_Transmit_IT(SIM800L_uart, (uint8_t*)send_buf, strlen(send_buf));
+		} else if (msg_num == 1) { // AT+CMGF=1 has been sent
+			msg_num = 2;          // Next state: send AT+CMGS="<num>"
+			if (queue_len > 0) {  // Make sure there's a number in the queue
+				snprintf(send_buf, sizeof(send_buf), "AT+CMGS=\"+48%s\"\r\n", (char*)queue[queue_id]);
+				HAL_UART_Transmit_IT(SIM800L_uart, (uint8_t*)send_buf, strlen(send_buf));
+			} else {
+				// This case should ideally not be reached if logic is correct
+				msg_sending = false;
+				msg_num = 0;
+			}
+		} else if (msg_num == 2) { // AT+CMGS="<num>" has been sent
+			// Now we wait for the ">" prompt from the module in RxCpltCallback.
+			// RxCpltCallback will set msg_num = 3 and send the message body.
+			// No transmission from TxCpltCallback at this specific step.
+		} else if (msg_num == 3) { // Message body "ALARM!!!" has been sent (triggered by RxCpltCallback)
+			msg_num = 4;          // Next state: send CTRL+Z
+			send_buf[0] = 0x1A;   // CTRL+Z character
+			// send_buf[1] = '\r'; // Some modules might expect CR after CTRL+Z, but usually not needed.
+			// send_buf[2] = '\0';
+			HAL_UART_Transmit_IT(SIM800L_uart, (uint8_t*)send_buf, 1); // Send only 1 byte (CTRL+Z)
+		} else if (msg_num == 4) { // CTRL+Z has been sent
+			msg_num = 5;          // Next state: waiting for final "OK" / "+CMGS:" response
+			// No transmission from TxCpltCallback. RxCpltCallback handles the final response.
+		}
+	}
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	static char buf[100];    // Buffer for received line
+	static uint8_t len = 0;  // Current length of data in buf
+
+	if (huart->Instance != SIM800L_uart->Instance) {
+		HAL_UART_Receive_IT(huart, &new, 1); // Re-arm for other UARTs if any, or just return
+		return;
+	}
+
+	// Check for line termination characters
+	if (new == '\n' || new == '\r') {
+		if (len > 0) { // If there's data in the buffer (avoid processing empty lines)
+			buf[len] = '\0'; // Null-terminate the received string
+
+			if (msg_sending) {
+				// Debugging: printf("SIM RX (State %d): %s\n", msg_num, buf);
+
+				// Check for ">" prompt after AT+CMGS (msg_num should be 2)
+				if (msg_num == 2 && (strstr(buf, ">") != NULL) ) {
+					msg_num = 3; // Transition to state: sending message body
+					strcpy(send_buf, "ALARM!!!\r"); // SMS content
+					HAL_UART_Transmit_IT(SIM800L_uart, (uint8_t*)send_buf, strlen(send_buf));
+				}
+				// Check for final "OK" after sending CTRL+Z (msg_num should be 5)
+				// Also, +CMGS: response usually precedes the OK.
+				else if (msg_num == 5 && (strstr(buf, "OK") != NULL || strstr(buf, "+CMGS:") != NULL) ) {
+                    // A simple check for "OK" or "+CMGS:" to confirm message status
+                    // More robust parsing would wait for +CMGS and then the final OK.
+                    // For this implementation, if we see OK in state 5, we assume success for now.
+                    if (strstr(buf, "OK") != NULL) { // Process only on the final OK
+                        queue_len--;
+                        queue_id = (queue_id + 1) % 6; // Move to next item in circular queue
+
+                        if (queue_len > 0) { // If there are more messages in the queue
+                            msg_num = 0; // Reset state for the next message
+                            strcpy(send_buf, "AT+COPS?\r\n"); // Start sequence for next SMS
+                            HAL_UART_Transmit_IT(SIM800L_uart, (uint8_t*)send_buf, strlen(send_buf));
+                        } else { // Queue is empty
+                            msg_sending = false;
+                            msg_num = 0; // Reset state
+                        }
+                    }
+				}
+				// Check for ERROR response from module at any relevant stage
+				else if (strstr(buf, "ERROR") != NULL) {
+					// Handle error: For simplicity, we'll skip the current message and try the next.
+					// A more robust handler might retry or log specific errors.
+					// printf("SIM ERROR (State %d): %s\n", msg_num, buf);
+					queue_len--;
+					queue_id = (queue_id + 1) % 6;
+
+					if (queue_len > 0) {
+						msg_num = 0; // Reset for next message
+						strcpy(send_buf, "AT+COPS?\r\n");
+						HAL_UART_Transmit_IT(SIM800L_uart, (uint8_t*)send_buf, strlen(send_buf));
+					} else {
+						msg_sending = false;
+						msg_num = 0;
+					}
+				}
+				// Intermediate "OK" responses (e.g., after AT+COPS?, AT+CMGF=1) are implicitly
+				// handled by the HAL_UART_TxCpltCallback proceeding to the next command.
+				// We primarily react in RxCpltCallback to ">", final "OK", or "ERROR".
+			}
+		}
+		len = 0; // Reset buffer index for the next line
+		memset(buf, 0, sizeof(buf)); // Clear the buffer
+	} else { // Not a line terminator, so append to buffer
+		if (len < (sizeof(buf) - 1)) { // Prevent buffer overflow
+			buf[len++] = new;
+		}
+		// else: buffer is full, character is dropped or an error could be logged.
+	}
+
+	// Always re-arm the UART receive interrupt for the next byte
+	HAL_UART_Receive_IT(SIM800L_uart, &new, 1);
+}

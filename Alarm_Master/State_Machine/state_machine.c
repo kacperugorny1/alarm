@@ -218,10 +218,9 @@ void state_machine_countdown(void){
 
 void state_machine_alert(void){
 	for(int i = 0; i < 3; ++i){
-		if(i != 0) HAL_Delay(5000);
-		gsm_sms_send(numbers + i*16);
+		gsm_sms_queue(numbers + i*16);
 	}
-
+	HAL_Delay(1000);
 	change_state(ARMED);
 }
 

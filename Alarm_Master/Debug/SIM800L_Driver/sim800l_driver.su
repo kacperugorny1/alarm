@@ -1,5 +1,6 @@
-../SIM800L_Driver/sim800l_driver.c:15:6:gsm_init	16	static
-../SIM800L_Driver/sim800l_driver.c:19:6:gsm_sms_queue	16	static
-../SIM800L_Driver/sim800l_driver.c:23:6:gsm_sms_send	128	static
-../SIM800L_Driver/sim800l_driver.c:47:6:HAL_UART_TxCpltCallback	16	static
-../SIM800L_Driver/sim800l_driver.c:56:6:HAL_UART_RxCpltCallback	16	static
+../SIM800L_Driver/sim800l_driver.c:32:6:gsm_init	16	static
+../SIM800L_Driver/sim800l_driver.c:38:13:advance_queue_and_proceed	16	static
+../SIM800L_Driver/sim800l_driver.c:52:6:gsm_sms_queue	24	static
+../SIM800L_Driver/sim800l_driver.c:72:6:gsm_sms_send	128	static
+../SIM800L_Driver/sim800l_driver.c:97:6:HAL_UART_TxCpltCallback	16	static
+../SIM800L_Driver/sim800l_driver.c:114:6:HAL_UART_RxCpltCallback	24	static

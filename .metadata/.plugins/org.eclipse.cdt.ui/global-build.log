@@ -1,4 +1,4 @@
-22:06:20 **** Incremental Build of configuration Debug for project Alarm_Master ****
+20:06:26 **** Incremental Build of configuration Debug for project Alarm_Master ****
 make -j12 all 
 arm-none-eabi-gcc "../SIM800L_Driver/sim800l_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/SIM800L_Driver" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"SIM800L_Driver/sim800l_driver.d" -MT"SIM800L_Driver/sim800l_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "SIM800L_Driver/sim800l_driver.o"
 arm-none-eabi-gcc -o "Alarm_Master.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\axeel\Desktop\alarm\Alarm_Master\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Alarm_Master.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -7,15 +7,58 @@ Finished building target: Alarm_Master.elf
 arm-none-eabi-size  Alarm_Master.elf 
 arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
    text	   data	    bss	    dec	    hex	filename
-  22340	    140	   2396	  24876	   612c	Alarm_Master.elf
+  22612	    140	   2500	  25252	   62a4	Alarm_Master.elf
 Finished building: default.size.stdout
  
 Finished building: Alarm_Master.list
  
-22:06:23 **** Incremental Build of configuration Debug for project Alarm_Master ****
+20:25:17 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-gcc "../State_Machine/state_machine.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/SIM800L_Driver" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"State_Machine/state_machine.d" -MT"State_Machine/state_machine.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "State_Machine/state_machine.o"
+arm-none-eabi-gcc "../SIM800L_Driver/sim800l_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/SIM800L_Driver" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"SIM800L_Driver/sim800l_driver.d" -MT"SIM800L_Driver/sim800l_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "SIM800L_Driver/sim800l_driver.o"
+arm-none-eabi-gcc -o "Alarm_Master.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\axeel\Desktop\alarm\Alarm_Master\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Alarm_Master.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Alarm_Master.elf
+ 
+arm-none-eabi-size  Alarm_Master.elf 
+arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
+   text	   data	    bss	    dec	    hex	filename
+  22848	    140	   2588	  25576	   63e8	Alarm_Master.elf
+Finished building: default.size.stdout
+ 
+Finished building: Alarm_Master.list
+ 
+20:32:33 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-gcc "../SIM800L_Driver/sim800l_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/SIM800L_Driver" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"SIM800L_Driver/sim800l_driver.d" -MT"SIM800L_Driver/sim800l_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "SIM800L_Driver/sim800l_driver.o"
+arm-none-eabi-gcc -o "Alarm_Master.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\axeel\Desktop\alarm\Alarm_Master\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Alarm_Master.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Alarm_Master.elf
+ 
+arm-none-eabi-size  Alarm_Master.elf 
+arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
+   text	   data	    bss	    dec	    hex	filename
+  22920	    140	   2588	  25648	   6430	Alarm_Master.elf
+Finished building: default.size.stdout
+ 
+Finished building: Alarm_Master.list
+ 
+20:33:03 **** Incremental Build of configuration Debug for project Alarm_Master ****
 make -j12 all 
 arm-none-eabi-size  Alarm_Master.elf 
    text	   data	    bss	    dec	    hex	filename
-  22340	    140	   2396	  24876	   612c	Alarm_Master.elf
+  22920	    140	   2588	  25648	   6430	Alarm_Master.elf
 Finished building: default.size.stdout
+ 
+20:41:42 **** Incremental Build of configuration Debug for project Alarm_Master ****
+make -j12 all 
+arm-none-eabi-gcc "../SIM800L_Driver/sim800l_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Keyboard_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Display" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/State_Machine" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface" -I"C:/Users/axeel/Desktop/alarm/Alarm_Master/SIM800L_Driver" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"SIM800L_Driver/sim800l_driver.d" -MT"SIM800L_Driver/sim800l_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "SIM800L_Driver/sim800l_driver.o"
+arm-none-eabi-gcc -o "Alarm_Master.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\axeel\Desktop\alarm\Alarm_Master\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Alarm_Master.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Alarm_Master.elf
+ 
+arm-none-eabi-size  Alarm_Master.elf 
+arm-none-eabi-objdump -h -S Alarm_Master.elf  > "Alarm_Master.list"
+   text	   data	    bss	    dec	    hex	filename
+  22920	    140	   2588	  25648	   6430	Alarm_Master.elf
+Finished building: default.size.stdout
+ 
+Finished building: Alarm_Master.list
  

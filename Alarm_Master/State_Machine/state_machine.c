@@ -9,9 +9,11 @@
 #include "flash_interface.h"
 #include "lcd_driver.h"
 #include "sim800l_driver.h"
+#include "expander.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 static bool changed = true;
 static char str[14];
@@ -82,8 +84,13 @@ void state_machine_run(char input){
 }
 
 void state_machine_armed(void){
-	GPIO_PinState singal_state = HAL_GPIO_ReadPin(Alarm_Signal_GPIO_Port, Alarm_Signal_Pin);
-	if(changed == true || !singal_state || HAL_GetTick() - timestamp > TIME_PER_SYMBOL){
+	static bool open;
+	static uint32_t ms;
+	if(HAL_GetTick() - ms > 100){
+		open = read_expander();
+		ms = HAL_GetTick();
+	}
+	if(changed == true || open || HAL_GetTick() - timestamp > TIME_PER_SYMBOL){
 		if(len == 0 && changed){
 			changed = false;
 			lcd_clear();
@@ -92,7 +99,7 @@ void state_machine_armed(void){
 			lcd_put_cur(1, 0);
 			lcd_send_string("PIN TO DISARM");
 		}
-		else if(!singal_state){
+		else if(open){
 			change_state(ARMED_COUNTDOWN);
 			countdown_start = HAL_GetTick();
 		}

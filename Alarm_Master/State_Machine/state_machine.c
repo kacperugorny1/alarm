@@ -25,6 +25,7 @@ static uint8_t id;
 static uint32_t timestamp;
 static uint32_t timestamp_display_s;
 static uint32_t countdown_start;
+static uint32_t arming_time = 30;
 
 static char* set_alert_time = "****";
 static char* set_new_pin = "**00";

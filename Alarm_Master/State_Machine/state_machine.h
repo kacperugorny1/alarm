@@ -23,14 +23,14 @@
 
 
 typedef enum {
-	ARMED = 0,			//DONE //TODO ALERT RF SPI
+	ARMED = 0,			//DONE
 	ARMED_COUNTDOWN, //DONE
-	ALERT_SMS,		//TODO GSM MODULE + CODE
+	ALERT_SMS,		//DONE
 	DISARMED,		//DONE
 	SET_NEW_PIN,	//DONE
 	MENAGE_NUMBER,	//DONE
 	REPLACE_NUMBER,	//DONE
-	SET_ALERT_TIME	//DONE
+	SET_ALERT_TIME,	//DONE
 } alarm_state;
 extern alarm_state state;
 

@@ -1,0 +1,22 @@
+/*
+ * expander.c
+ *
+ *  Created on: Jun 8, 2025
+ *      Author: axeel
+ */
+
+#include "expander.h"
+I2C_HandleTypeDef *i2c_mcp;
+
+void mcp_init (I2C_HandleTypeDef *i2c){
+	i2c_mcp = i2c;
+}
+
+
+void mcp_write_reg (uint8_t reg_addr, uint8_t mess){
+	HAL_I2C_Mem_Write(i2c_mcp, SLAVE_ADDRESS_MCP << 1, reg_addr, 1, &mess, 1, HAL_MAX_DELAY);
+}
+
+void mcp_write_reg (uint8_t reg_addr, uint8_t* mess){
+	HAL_I2C_Mem_Read(i2c_mcp, SLAVE_ADDRESS_MCP<<1, reg_addr, 1, mess, 1, HAL_MAX_DELAY)
+}

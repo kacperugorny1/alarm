@@ -1,0 +1,4 @@
+../Expander/expander.c:11:6:mcp_init	1
+../Expander/expander.c:20:6:read_expander	1
+../Expander/expander.c:27:6:mcp_write_reg	1
+../Expander/expander.c:31:6:mcp_read_reg	1

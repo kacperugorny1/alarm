@@ -1,0 +1,4 @@
+../Expander/expander.c:11:6:mcp_init	16	static
+../Expander/expander.c:20:6:read_expander	16	static
+../Expander/expander.c:27:6:mcp_write_reg	32	static
+../Expander/expander.c:31:6:mcp_read_reg	32	static

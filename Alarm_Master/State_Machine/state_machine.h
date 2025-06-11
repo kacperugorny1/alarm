@@ -31,6 +31,7 @@ typedef enum {
 	MENAGE_NUMBER,	//DONE
 	REPLACE_NUMBER,	//DONE
 	SET_ALERT_TIME,	//DONE
+	ARMING,
 } alarm_state;
 extern alarm_state state;
 
@@ -46,5 +47,6 @@ void state_machine_set_alert_time(void);
 void state_machine_set_new_pin(void);
 void state_machine_menage_number(void);
 void state_machine_replace_number(void);
+void state_machine_arming(void);
 
 #endif

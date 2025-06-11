@@ -25,7 +25,8 @@ static uint8_t id;
 static uint32_t timestamp;
 static uint32_t timestamp_display_s;
 static uint32_t countdown_start;
-static uint32_t arming_time = 30;
+static uint32_t arming_ms;
+static uint32_t arming_time = 10;
 
 static char* set_alert_time = "****";
 static char* set_new_pin = "**00";
@@ -78,9 +79,9 @@ void state_machine_run(char input){
 		changed = true;
 		str[len++] = input;
 	}
-	static void(*state_functions[8])(void) = {state_machine_armed, state_machine_countdown, state_machine_alert,
+	static void(*state_functions[9])(void) = {state_machine_armed, state_machine_countdown, state_machine_alert,
 			state_machine_disarmed, state_machine_set_new_pin, state_machine_menage_number,
-			state_machine_replace_number, state_machine_set_alert_time};
+			state_machine_replace_number, state_machine_set_alert_time,state_machine_arming};
 	state_functions[state]();
 }
 
@@ -151,7 +152,8 @@ void state_machine_disarmed(void){
 		  str[len] = '\0';
 		  lcd_send_string(str);
 		  if(strcmp(str,pin) == 0){
-			  change_state(ARMED);
+			  arming_ms = HAL_GetTick();
+			  change_state(ARMING);
 		  }
 		  else if(strcmp(str,set_new_pin) == 0){
 			  change_state(SET_NEW_PIN);
@@ -337,6 +339,19 @@ void state_machine_replace_number(void){
 			save_new_state();
 			change_state(MENAGE_NUMBER);
 		}
+	}
+}
+
+void state_machine_arming(void){
+	if(len == 1 && str[len - 1] == '#') change_state(DISARMED);
+	else if (HAL_GetTick() - arming_ms < 50){
+		lcd_clear();
+		lcd_put_cur(0,0);
+		lcd_send_string("Arming");
+		HAL_Delay(100);
+	}
+	else if(HAL_GetTick() - arming_ms > arming_time * 1000){
+		change_state(ARMED);
 	}
 }
 

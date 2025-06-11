@@ -30,6 +30,7 @@
 #include "state_machine.h"
 #include "flash_interface.h"
 #include "sim800l_driver.h"
+#include "expander.h"
 
 /* USER CODE END Includes */
 
@@ -121,17 +122,17 @@ int main(void)
 	flash_read_multiple_words(0x08060000, (uint32_t *)data_out, 16);
 	//PARSING TO VARIABLES
 	state_machine_init(data_out);
+	lcd_init(&hi2c1);
+	gsm_init(&huart1);
+	mcp_init(&hi2c1);
   }
-  lcd_init(hi2c1);
-  gsm_init(&huart1);
-  char x;
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  static char x;
 	  x = check_keyboard();
 	  if(x){
 		  if(x < 10) x += '0';

@@ -118,8 +118,8 @@ int main(void)
 
   //READOUT
   {
-	char data_out[64];
-	flash_read_multiple_words(0x08060000, (uint32_t *)data_out, 16);
+	char data_out[72];
+	flash_read_multiple_words(0x08060000, (uint32_t *)data_out, 18);
 	//PARSING TO VARIABLES
 	state_machine_init(data_out);
 	lcd_init(&hi2c1);

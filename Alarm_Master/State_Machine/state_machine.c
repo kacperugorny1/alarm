@@ -31,21 +31,23 @@ static uint32_t arming_time = 10;
 static char* set_alert_time = "****";
 static char* set_new_pin = "**00";
 static char* menage_number = "0*0*";
+static char* set_alarming = "7***";
 static char pin[9] = "";
 static char numbers[48];
 
 static uint32_t countdown_delay;
 //HELPER FUNCTIONS
 void save_new_state(void){
-	char to_save[64];
-	memset(to_save, 0, 64);
+	char to_save[72];
+	memset(to_save, 0, 66);
 	memcpy(to_save, numbers, 48);
 	memcpy(to_save + 48, pin, 8);
 	snprintf(to_save + 56, 8, "%ld", countdown_delay/1000);
+	snprintf(to_save + 64, 8, "%ld", arming_time/1000);
 	for(size_t i = 0; i < 64; ++i)
 		if(to_save[i] == '\0' || to_save[i] == '#') to_save[i] = '*';
 	flash_write_erase_sector7();
-	flash_write_multiple_word(0x08060000, (uint32_t *)to_save, 16);
+	flash_write_multiple_word(0x08060000, (uint32_t *)to_save, 18);
 
 }
 
@@ -65,12 +67,14 @@ void state_machine_init(char data_blob[64]){
 		if(data_blob[i] == '*') data_blob[i] = '\0';
 	memcpy(numbers, data_blob, 48);
 	memcpy(pin, data_blob + 48, 8);
-	memcpy(temp, data_blob + 56, 8);
-
-
-	countdown_delay = strtol(temp, NULL, 10);
 	pin[strlen(pin)] = '#';
+
+	memcpy(temp, data_blob + 56, 8);
+	countdown_delay = strtol(temp, NULL, 10);
 	countdown_delay = s_to_ms(countdown_delay);
+	memcpy(temp, data_blob + 64, 8);
+	arming_time = strtol(temp, NULL, 10);
+	arming_time = s_to_ms(arming_time);
 
 }
 
@@ -79,9 +83,9 @@ void state_machine_run(char input){
 		changed = true;
 		str[len++] = input;
 	}
-	static void(*state_functions[9])(void) = {state_machine_armed, state_machine_countdown, state_machine_alert,
+	static void(*state_functions[10])(void) = {state_machine_armed, state_machine_countdown, state_machine_alert,
 			state_machine_disarmed, state_machine_set_new_pin, state_machine_menage_number,
-			state_machine_replace_number, state_machine_set_alert_time,state_machine_arming};
+			state_machine_replace_number, state_machine_set_alert_time,state_machine_arming,state_machine_set_arming_time};
 	state_functions[state]();
 }
 
@@ -163,6 +167,9 @@ void state_machine_disarmed(void){
 		  }
 		  else if(strcmp(str,menage_number) == 0){
 			  change_state(MENAGE_NUMBER);
+		  }
+		  else if(strcmp(str,set_alarming) == 0){
+			  change_state(SET_ALARMING);
 		  }
 		  else if(str[len - 1] == '#' || len == 14 || !changed){
 			  lcd_clear();
@@ -350,9 +357,32 @@ void state_machine_arming(void){
 		lcd_send_string("Arming");
 		HAL_Delay(100);
 	}
-	else if(HAL_GetTick() - arming_ms > arming_time * 1000){
+	else if(HAL_GetTick() - arming_ms > arming_time){
 		change_state(ARMED);
 	}
 }
 
 
+void state_machine_set_arming_time(void){
+	if(changed == true){
+		if(len == 0 && changed){
+			changed = false;
+			lcd_clear();
+			lcd_put_cur(0, 0);
+			lcd_send_string ("TIME(S),#=SAVE");
+		}
+		else if(len != 0){
+			lcd_put_cur(1, 0);
+			if(str[len - 1] == '*' || len > 9){
+				change_state(DISARMED);
+			}
+			lcd_send_string(str);
+			if(str[len - 1] == '#'){
+				arming_time = s_to_ms(strtol(str, NULL, 10));
+				save_new_state();
+
+				change_state(DISARMED);
+			}
+		}
+	}
+}

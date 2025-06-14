@@ -14,6 +14,7 @@ RM := rm -rf
 -include LCD_Driver/subdir.mk
 -include Keyboard_Driver/subdir.mk
 -include Flash_Interface/subdir.mk
+-include Expander/subdir.mk
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Display/subdir.mk
 -include Core/Startup/subdir.mk

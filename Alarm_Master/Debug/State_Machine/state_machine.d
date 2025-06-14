@@ -31,7 +31,8 @@ State_Machine/state_machine.o: ../State_Machine/state_machine.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface/flash_interface.h \
  C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver/lcd_driver.h \
- C:/Users/axeel/Desktop/alarm/Alarm_Master/SIM800L_Driver/sim800l_driver.h
+ C:/Users/axeel/Desktop/alarm/Alarm_Master/SIM800L_Driver/sim800l_driver.h \
+ C:/Users/axeel/Desktop/alarm/Alarm_Master/Expander/expander.h
 ../State_Machine/state_machine.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -65,3 +66,4 @@ State_Machine/state_machine.o: ../State_Machine/state_machine.c \
 C:/Users/axeel/Desktop/alarm/Alarm_Master/Flash_Interface/flash_interface.h:
 C:/Users/axeel/Desktop/alarm/Alarm_Master/LCD_Driver/lcd_driver.h:
 C:/Users/axeel/Desktop/alarm/Alarm_Master/SIM800L_Driver/sim800l_driver.h:
+C:/Users/axeel/Desktop/alarm/Alarm_Master/Expander/expander.h:

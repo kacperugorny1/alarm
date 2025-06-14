@@ -26,6 +26,7 @@ Core/Src \
 Core/Startup \
 Display \
 Drivers/STM32F4xx_HAL_Driver/Src \
+Expander \
 Flash_Interface \
 Keyboard_Driver \
 LCD_Driver \

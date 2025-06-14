@@ -1,9 +1,9 @@
 ../Drivers/CMSIS/Include/core_cm4.h:2064:26:ITM_SendChar	4
-../Core/Src/main.c:81:5:main	6
-../Core/Src/main.c:155:6:SystemClock_Config	3
-../Core/Src/main.c:201:13:MX_I2C1_Init	2
-../Core/Src/main.c:235:13:MX_SPI2_Init	2
-../Core/Src/main.c:273:13:MX_USART1_UART_Init	2
-../Core/Src/main.c:306:13:MX_GPIO_Init	1
-../Core/Src/main.c:356:5:_write	2
-../Core/Src/main.c:373:6:Error_Handler	1
+../Core/Src/main.c:82:5:main	6
+../Core/Src/main.c:156:6:SystemClock_Config	3
+../Core/Src/main.c:202:13:MX_I2C1_Init	2
+../Core/Src/main.c:236:13:MX_SPI2_Init	2
+../Core/Src/main.c:274:13:MX_USART1_UART_Init	2
+../Core/Src/main.c:307:13:MX_GPIO_Init	1
+../Core/Src/main.c:357:5:_write	2
+../Core/Src/main.c:374:6:Error_Handler	1

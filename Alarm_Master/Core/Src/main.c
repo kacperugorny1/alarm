@@ -126,21 +126,24 @@ int main(void)
 	gsm_init(&huart1);
 	mcp_init(&hi2c1);
   }
+
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  static char x;
-	  x = check_keyboard();
-	  if(x){
-		  if(x < 10) x += '0';
-		  else if(x == 10) x = '*';
-		  else if(x == 11) x = '0';
-		  else if(x == 12) x = '#';
-	  }
-	  state_machine_run(x);
+	HAL_Delay(10);
+	static char x;
+	x = check_keyboard();
+	if(x){
+	  if(x < 10) x += '0';
+	  else if(x == 10) x = '*';
+	  else if(x == 11) x = '0';
+	  else if(x == 12) x = '#';
+	}
+	state_machine_run(x);
 
     /* USER CODE END WHILE */
 
@@ -282,7 +285,7 @@ static void MX_USART1_UART_Init(void)
 
   /* USER CODE END USART1_Init 1 */
   huart1.Instance = USART1;
-  huart1.Init.BaudRate = 115200;
+  huart1.Init.BaudRate = 9600;
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_NONE;
@@ -316,38 +319,42 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, Keyboard_col3_Pin|Keyboard_col1_Pin|Keyboard_col2_Pin|SPI_SW_CSN_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_12, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(SPI_SW_CE_GPIO_Port, SPI_SW_CE_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(SPI_SW_NSS_GPIO_Port, SPI_SW_NSS_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pins : Keyboard_row2_Pin Keyboard_row3_Pin Keyboard_row4_Pin Keyboard_row1_Pin
-                           Alarm_Signal_Pin */
-  GPIO_InitStruct.Pin = Keyboard_row2_Pin|Keyboard_row3_Pin|Keyboard_row4_Pin|Keyboard_row1_Pin
-                          |Alarm_Signal_Pin;
+  /*Configure GPIO pins : PA0 PA2 PA4 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_2|GPIO_PIN_4;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PA1 PA3 PA5 PA6 */
+  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_3|GPIO_PIN_5|GPIO_PIN_6;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : Keyboard_col3_Pin Keyboard_col1_Pin Keyboard_col2_Pin SPI_SW_CSN_Pin */
-  GPIO_InitStruct.Pin = Keyboard_col3_Pin|Keyboard_col1_Pin|Keyboard_col2_Pin|SPI_SW_CSN_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : SPI_SW_CE_Pin */
-  GPIO_InitStruct.Pin = SPI_SW_CE_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(SPI_SW_CE_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : SPI_IRQ_Pin */
   GPIO_InitStruct.Pin = SPI_IRQ_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(SPI_IRQ_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : SPI_SW_NSS_Pin PA12 */
+  GPIO_InitStruct.Pin = SPI_SW_NSS_Pin|GPIO_PIN_12;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : Alarm_Signal_Pin */
+  GPIO_InitStruct.Pin = Alarm_Signal_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(Alarm_Signal_GPIO_Port, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */

@@ -58,11 +58,11 @@ char check_keyboard(void){
 	x = 0;
 	i = 0;
 	for (int col = 0; col < 3; col++) {
-	    set_column(col, GPIO_PIN_RESET);
+	    set_column(col, GPIO_PIN_SET);
 	    for (int row = 0; row < 4; row++) {
 	    	uint32_t t = HAL_GetTick();
 	    	if(t - lastDebounceTime[(row) * 3 + col] > DEBOUNCE_TIME){
-				if (read_row(row) == GPIO_PIN_RESET) {
+				if (read_row(row) == GPIO_PIN_SET) {
 					if(!keyState[(row) * 3 + col])
 						handle_key_press(col, row);
 					lastDebounceTime[(row) * 3 + col] = HAL_GetTick();
@@ -72,7 +72,7 @@ char check_keyboard(void){
 				}
 	    	}
 	    }
-	    set_column(col, GPIO_PIN_SET);
+	    set_column(col, GPIO_PIN_RESET);
 	}
 	return x;
 }

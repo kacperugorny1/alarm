@@ -1,0 +1,91 @@
+/*
+ * Keyboard.c
+ *
+ * Created on: May 10, 2025
+ * Author: axeel
+ */
+#include "keyboard.h"
+#include "keyboard_defines.h"
+#include <stdbool.h>
+
+// These arrays keep track of the key states and debounce timings.
+// They must be static to retain their values across function calls.
+static uint32_t lastDebounceTime[12] = {0};
+static bool keyState[12] = {false};
+
+// Helper function to set the column state
+void set_column(uint8_t col, GPIO_PinState state) {
+    switch (col) {
+        case 0:
+            HAL_GPIO_WritePin(Keyboard_col1_GPIO_Port, Keyboard_col1_Pin, state);
+            break;
+        case 1:
+            HAL_GPIO_WritePin(Keyboard_col2_GPIO_Port, Keyboard_col2_Pin, state);
+            break;
+        case 2:
+            HAL_GPIO_WritePin(Keyboard_col3_GPIO_Port, Keyboard_col3_Pin, state);
+            break;
+    }
+}
+
+// Helper function to read the row state
+GPIO_PinState read_row(uint8_t row) {
+    switch (row) {
+        case 0:
+            return HAL_GPIO_ReadPin(Keyboard_row1_GPIO_Port, Keyboard_row1_Pin);
+        case 1:
+            return HAL_GPIO_ReadPin(Keyboard_row2_GPIO_Port, Keyboard_row2_Pin);
+        case 2:
+            return HAL_GPIO_ReadPin(Keyboard_row3_GPIO_Port, Keyboard_row3_Pin);
+        case 3:
+            return HAL_GPIO_ReadPin(Keyboard_row4_GPIO_Port, Keyboard_row4_Pin);
+    }
+    return GPIO_PIN_SET; // Default to not pressed
+}
+
+/**
+ * @brief Scans the keyboard for a new key press and returns its value.
+ *
+ * @note This function is designed to only report a key press once when it is
+ * first detected (on its falling edge). It will return 0 for held keys
+ * or when no new key is pressed.
+ *
+ * @return char The numerical value of the pressed key (1-12), or 0 if no new key is pressed.
+ */
+char check_keyboard(void) {
+    for (int col = 0; col < 3; col++) {
+        // Activate the current column
+        set_column(col, GPIO_PIN_RESET);
+
+        // Optional: Add a very small delay to allow GPIOs to settle.
+        // On faster MCUs, this can prevent reading unstable values.
+        // for (volatile int i = 0; i < 10; i++);
+
+        for (int row = 0; row < 4; row++) {
+            int index = (row * 3) + col;
+            uint32_t currentTime = HAL_GetTick();
+
+            // Check if the pin state is stable (past the debounce time)
+            if (currentTime - lastDebounceTime[index] > DEBOUNCE_TIME) {
+                if (read_row(row) == GPIO_PIN_RESET) { // Key is currently pressed
+                    if (!keyState[index]) {
+                        // Key was just pressed (transition from released to pressed)
+                        keyState[index] = true;
+                        lastDebounceTime[index] = currentTime;
+
+                        // Deactivate the column before returning
+                        set_column(col, GPIO_PIN_SET);
+                        return index + 1; // Return the key's value (1-12)
+                    }
+                } else {
+                    // Key is currently released
+                    keyState[index] = false;
+                }
+            }
+        }
+        // Deactivate the current column before moving to the next
+        set_column(col, GPIO_PIN_SET);
+    }
+
+    return 0; // No new key press detected
+}

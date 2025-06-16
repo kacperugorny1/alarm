@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <stdio.h>
 #include "sim800l_driver.h" // Assuming this declares HAL_UART_HandleTypeDef if not included by main.h
 
 static UART_HandleTypeDef * SIM800L_uart;
@@ -135,6 +136,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
 	// Check for "> " prompt specifically when waiting for it (state 2)
 	if (msg_sending && msg_num == 2) {
+		printf("%s\n",buf);
 		if (len >= 2 && buf[len-2] == '>' && buf[len-1] == ' ') {
 			// Prompt detected
 			msg_num = 3;
@@ -151,6 +153,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
 	// Process full lines on encountering a Newline character
 	if (new_char == '\n') {
+		printf("%s\n",buf);
 		if (len > 0) { // Process if buffer has content
 			if (msg_sending) {
 				// Optional: Print received line for debugging
